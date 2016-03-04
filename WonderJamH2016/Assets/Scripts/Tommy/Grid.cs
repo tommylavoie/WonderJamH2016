@@ -44,6 +44,13 @@ public class Grid : MonoBehaviour
         return goals;
     }
 
+    public void SetElement(int element, Position position)
+    {
+        if (position.x >= 0 && position.x < NUMBER_OF_ROWS && position.y >= 0 && 
+            position.y < NUMBER_OF_COLS && element >=0 && element < 5)
+            grid[position.x, position.y] = element;
+    }
+
     List<Position> CreatePath(Position[,] paths, Position goal)
     {
         Stack<Position> path = new Stack<Position>();
@@ -111,7 +118,7 @@ public class Grid : MonoBehaviour
 
     public static int EMPTY = 0;
     public static int CELL = 1;
-    public static int ENTRY = 2;
-    public static int MINE = 3;
+    public static int GOAL_1 = 2;
+    public static int GOAL_2 = 3;
     public static int DEAD_CELL = 4;
 }
