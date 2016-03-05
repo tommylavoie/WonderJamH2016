@@ -73,7 +73,7 @@ public class Grid : MonoBehaviour
         return list;
     }
 
-    List<Position> GetShortestConnection(Position start)
+   public List<Position> GetShortestConnection(Position start)
     {
         DijkstraCalculator dc = new DijkstraCalculator();
         int[,] results = dc.GetShortestPath(this, start);
