@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GridGenerator : MonoBehaviour
 {
+    public LumiereManager lumiereManager;
+
     Grid grid;
     public int Spawners = 0;
     public int Mines = 0;
@@ -61,7 +63,11 @@ public class GridGenerator : MonoBehaviour
         {
             for (int j = 0; j < Grid.NUMBER_OF_COLS; j++)
             {
-                spawners[k] = new Position(i, j);
+                if (grid.GetElement(i, j) == Grid.SPAWN || grid.GetElement(i, j) == Grid.MINE)
+                {
+                    spawners[k] = new Position(i, j);
+                    k++;
+                }
             }
         }
         grid.setSpawners(spawners);
@@ -114,6 +120,8 @@ public class GridGenerator : MonoBehaviour
 
         //Liste de spawners
         setSpawners();
+
+        lumiereManager.initialiserMonTableau(grid.getSpawners());
 
         grid.print();
     }

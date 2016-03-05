@@ -4,15 +4,17 @@ using System.Collections.Generic;
 
 public class Pathfinder : MonoBehaviour
 {
-    public Grid grid;
-    public Texture defaultTexture;
-    public Texture firstPlayerTexture;
-    public Texture secondPlayerTexture;
+    Grid grid;
+    CellGrid cellGrid;
+    public Sprite defaultSprite;
+    public Sprite firstPlayerSprite;
+    public Sprite secondPlayerSprite;
 
 	// Use this for initialization
 	void Start ()
     {
-	    
+        grid = GetComponent<Grid>();
+        cellGrid = GetComponent<CellGrid>();
 	}
 	
 	// Update is called once per frame
@@ -21,14 +23,38 @@ public class Pathfinder : MonoBehaviour
 	    
 	}
 
+    void ChangeSprite(GameObject gameObject, Sprite sprite)
+    {
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        renderer.sprite = defaultSprite;
+    }
+
     void ResetPaths()
     {
-
+        for (int i = 0; i < Grid.NUMBER_OF_ROWS; i++)
+        {
+            for (int j = 0; j < Grid.NUMBER_OF_COLS; j++)
+            {
+                if(cellGrid.GetElement(new Position(i, j)) != null)
+                {
+                    ChangeSprite(cellGrid.GetElement(new Position(i, j)), defaultSprite);
+                }
+            }
+        }
     }
 
     void ChangePathPlayer(int player, List<Position> path)
     {
-
+        foreach(Position node in path)
+        {
+            if (cellGrid.GetElement(new Position(node.x, node.y)) != null)
+            {
+                Sprite sprite = firstPlayerSprite;
+                if (player == 1)
+                    sprite = secondPlayerSprite;
+                ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), sprite);
+            }
+        }
     }
 
     void UpdatePath(Position start)
@@ -54,7 +80,7 @@ public class Pathfinder : MonoBehaviour
 
     public void UpdateShortestPaths()
     {
-        ResetPaths();
+        //ResetPaths();
         Position[] spawners = grid.getSpawners();
         foreach(Position s in spawners)
         {
