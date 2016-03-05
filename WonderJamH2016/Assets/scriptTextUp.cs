@@ -18,4 +18,9 @@ public class scriptTextUp : MonoBehaviour {
     {
         GetComponent<TextMesh>().text = text;
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }
