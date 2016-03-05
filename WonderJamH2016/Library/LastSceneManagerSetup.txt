@@ -1,4 +1,16 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Cri.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Antoine.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Cri.unity
+=======
+- path: Assets/Scenes/Tommy.unity
+>>>>>>> 2f524b52bbb6dda2b8a23a1ffa166e2cbb297606
+>>>>>>> 2d207513b4bd12285ff6bc9475cfc5f855dfd402
+>>>>>>> 832d2c8864eb73dd96fe6f0494de7c56de89fe83
   isLoaded: 1
   isActive: 1

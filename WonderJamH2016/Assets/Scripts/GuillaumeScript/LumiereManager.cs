@@ -71,6 +71,7 @@ public class LumiereManager : MonoBehaviour
 
     public void unTic()
     {
+        Debug.Log("Tic");
         for (int i = 0; i < poolDesLumiereGameObject.Length; i++)
         {
             Lumiere lumiere = poolDesLumiereGameObject[i].GetComponent<Lumiere>();
@@ -78,6 +79,7 @@ public class LumiereManager : MonoBehaviour
             poolDesLumiereGameObject[i].GetComponent<Lumiere>().updateTaPosition();
             poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]++;
+            
         }
         testCollisions();
     }

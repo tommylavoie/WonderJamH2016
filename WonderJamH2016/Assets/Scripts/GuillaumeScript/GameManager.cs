@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour {
 
             if(delaisEntreChaqueTic <= 0)
             {
-                Debug.Log("Je veu un tic");
                 leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
                 delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
 

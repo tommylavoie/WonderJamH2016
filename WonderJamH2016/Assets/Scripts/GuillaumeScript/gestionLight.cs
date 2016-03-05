@@ -14,7 +14,7 @@ public class gestionLight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         maLumiere = GetComponent<Light>();
-        leDelaisDuTic = GameManager.instance.delaisEntreChaqueTic / 2;
+        leDelaisDuTic = GameManager.instance.delaisEntreChaqueTic / 4;
 	
 	}
 	
