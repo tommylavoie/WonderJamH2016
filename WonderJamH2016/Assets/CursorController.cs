@@ -199,4 +199,15 @@ public class CursorController : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
         CanPress = true;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Eclair")
+        {
+            Joueur.GetComponent<Joueur>().addResource(Joueur.GetComponent<Joueur>().valeurEclair);
+            Destroy(other.gameObject);
+            grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        }
+    }
+
 }
