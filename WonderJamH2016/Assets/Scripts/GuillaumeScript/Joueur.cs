@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Joueur : MonoBehaviour {
 
@@ -105,6 +106,8 @@ public class Joueur : MonoBehaviour {
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 pathfinder.UpdateShortestPaths();
                 depenserResource(coutCell);
+
+               List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
             
         }

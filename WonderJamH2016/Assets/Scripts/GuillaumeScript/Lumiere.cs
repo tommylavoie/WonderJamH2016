@@ -49,6 +49,6 @@ public class Lumiere : MonoBehaviour {
 
     void updaterMaPositionDansLeMondeDuJeu(Position laPositionCourante)
     {
-        transform.position = new Vector2(positionCourante.x * 2, positionCourante.y * 2);
+        transform.position = new Vector2(-7 + (positionCourante.x * 0.4f) , 3 -(positionCourante.y * 0.4f));
     }
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e257e0fc23e26cc419f9691998dd7cae
-timeCreated: 1457156697
+timeCreated: 1457161333
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,10 @@ TextureImporter:
     21300008: UIpackSheet_transparent_4
     21300010: UIpackSheet_transparent_5
     21300012: UIpackSheet_transparent_6
+    21300014: UIpackSheet_transparent_7
+    21300016: UIpackSheet_transparent_8
+    21300018: UIpackSheet_transparent_9
+    21300020: UIpackSheet_transparent_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -133,6 +137,50 @@ TextureImporter:
         serializedVersion: 2
         x: 55
         y: 163
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_7
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 343
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_8
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 343
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_9
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 481
+        width: 57
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_10
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 487
         width: 14
         height: 14
       alignment: 0
