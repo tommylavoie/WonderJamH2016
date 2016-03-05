@@ -7,6 +7,7 @@ public class Grid : MonoBehaviour
 {
     int[,] grid;
     GoalInfo[] goals;
+    Position[] spawners;
 
 	// Use this for initialization
 	void Start ()
@@ -54,11 +55,32 @@ public class Grid : MonoBehaviour
         return goals;
     }
 
+    public Position[] getSpawners()
+    {
+        return spawners;
+    }
+
+    public void setSpawners(Position[] s)
+    {
+        spawners = s;
+    }
+
     public void SetElement(int element, Position position)
     {
         if (position.x >= 0 && position.x < NUMBER_OF_ROWS && position.y >= 0 && 
             position.y < NUMBER_OF_COLS)
             grid[position.x, position.y] = element;
+    }
+
+    public GoalInfo GetAssociatedGoal(Position association)
+    {
+        foreach(GoalInfo goal in goals)
+        {
+            Position goalConnected = goal.getCellConnectedToGoal();
+            if (association.x == goalConnected.x && association.y == goalConnected.y)
+                return goal;
+        }
+        return null;
     }
 
     List<Position> CreatePath(Position[,] paths, Position goal)
