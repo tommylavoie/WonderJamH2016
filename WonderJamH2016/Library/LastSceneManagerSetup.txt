@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Cri.unity
+=======
+- path: Assets/Scenes/TommyMapPowa.unity
+>>>>>>> 54da7185d10e329516d7692091bdcd57e2472e21
   isLoaded: 1
   isActive: 1
