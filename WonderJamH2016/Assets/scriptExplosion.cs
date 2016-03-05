@@ -20,7 +20,7 @@ public class scriptExplosion : MonoBehaviour {
             Debug.Log("Cest un cellule");
             DestroyObject(other);
         }
-            
+        GameManager.instance.ilYAEuUneExplosionCeTourCiSauveQuiPeut = true;
 
     }
 

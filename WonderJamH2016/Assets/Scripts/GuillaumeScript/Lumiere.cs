@@ -19,8 +19,8 @@ public class Lumiere : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void LateUpdate ()
+    {
 	}
 
     public void initialiserLumiere(int x, int y, Grid laGrid, Joueur joueur1, Joueur joueur2)
@@ -36,38 +36,19 @@ public class Lumiere : MonoBehaviour {
 
     }
 
-    /*public void updateTaPosition()
-    {
-        Debug.Log("Je suis dans mon update");
-        //Verification si je suis rendu au goal
-        if (maGrid.GetShortestConnection(positionCourante).Count > 1)
-        {
-            positionCourante = maGrid.GetShortestConnection(positionCourante)[1];
-        }
-        else if(maGrid.GetShortestConnection(positionCourante).Count == 1)
-        {
-            GoalInfo goal = maGrid.GetAssociatedGoal(positionCourante);
-            int player = goal.GetPlayerNumber();
-            if (player == 0)
-                joueur1.addScore(1);
-            else
-                joueur2.addScore(1);
-            positionCourante = startPosition;
-        }
-        //Ici je dois caller ma fonction qui updater la lumiere dans le monde du jeu
-        updaterMaPositionDansLeMondeDuJeu(positionCourante);
-    }*/
-
     bool yATilQuelqueChoseAutourDeMoiMonsieur()
     {
-        if (positionCourante.x != 0 && maGrid.getGrid()[positionCourante.x - 1, positionCourante.y] == 1)
-            return true;
-        if (positionCourante.x != Grid.NUMBER_OF_ROWS - 1 && maGrid.getGrid()[positionCourante.x + 1, positionCourante.y] == 1)
-            return true;
-        if (positionCourante.y != 0 && maGrid.getGrid()[positionCourante.x, positionCourante.y - 1] == 1)
-            return true;
-        if (positionCourante.y != Grid.NUMBER_OF_COLS - 1 && maGrid.getGrid()[positionCourante.x, positionCourante.y + 1] == 1)
-            return true;
+        if (maGrid.getGrid()[positionCourante.x, positionCourante.y] == 1)
+        {
+            if (positionCourante.x != 0 && maGrid.getGrid()[positionCourante.x - 1, positionCourante.y] == 1)
+                return true;
+            if (positionCourante.x != Grid.NUMBER_OF_ROWS - 1 && maGrid.getGrid()[positionCourante.x + 1, positionCourante.y] == 1)
+                return true;
+            if (positionCourante.y != 0 && maGrid.getGrid()[positionCourante.x, positionCourante.y - 1] == 1)
+                return true;
+            if (positionCourante.y != Grid.NUMBER_OF_COLS - 1 && maGrid.getGrid()[positionCourante.x, positionCourante.y + 1] == 1)
+                return true;
+        }
         return false;
     }
 
