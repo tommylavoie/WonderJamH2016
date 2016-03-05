@@ -124,9 +124,10 @@ public class Grid : MonoBehaviour
         }
 
         List<Position> path = null;
-        if(minGoal != null)
+        if (minGoal != null)
             path = CreatePath(dc.paths, minGoal);
-        Debug.Log(path);
+        else
+            path = new List<Position>();
         return path;
     }
 

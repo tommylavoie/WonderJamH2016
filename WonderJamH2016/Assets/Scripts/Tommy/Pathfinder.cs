@@ -26,7 +26,7 @@ public class Pathfinder : MonoBehaviour
     void ChangeSprite(GameObject gameObject, Sprite sprite)
     {
         SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-        renderer.sprite = defaultSprite;
+        renderer.sprite = sprite;
     }
 
     void ResetPaths()
@@ -62,7 +62,7 @@ public class Pathfinder : MonoBehaviour
         if(grid.GetElement(start.x,start.y) == Grid.CELL)
         {
             List<Position> shortestPath = grid.GetShortestConnection(start);
-            if(shortestPath != null)
+            if(shortestPath != null && shortestPath.Count > 0)
             {
                 GoalInfo goal = grid.GetAssociatedGoal(shortestPath[shortestPath.Count - 1]);
                 ChangePathPlayer(goal.GetPlayerNumber(), shortestPath);
@@ -80,7 +80,7 @@ public class Pathfinder : MonoBehaviour
 
     public void UpdateShortestPaths()
     {
-        //ResetPaths();
+        ResetPaths();
         Position[] spawners = grid.getSpawners();
         foreach(Position s in spawners)
         {

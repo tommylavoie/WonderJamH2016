@@ -141,6 +141,15 @@ public class Joueur : MonoBehaviour {
         }
     }
 
+    public void faireHammer()
+    {
+        grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
+        cellGrid.RemoveElement(new Position(indexLigne, indexCol));
+        Destroy(o);
+        pathfinder.UpdateShortestPaths();
+    }
+
     public void updaterScoreUI()
     {
         scoreUI.GetComponent<Text>().text = score.ToString();

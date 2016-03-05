@@ -120,9 +120,5 @@ public class GridGenerator : MonoBehaviour
 
         //Liste de spawners
         setSpawners();
-
-        lumiereManager.initialiserMonTableau(grid.getSpawners());
-
-        grid.print();
     }
 }
