@@ -5,7 +5,7 @@ using System.Text;
 
 public class GoalInfo
 {
-    Position position;
+    public Position position;
     int player;
 
     public GoalInfo(Position p, int player)

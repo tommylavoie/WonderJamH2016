@@ -26,7 +26,7 @@ public class Grid : MonoBehaviour
             }
         }
         goals = new GoalInfo[6];
-        goals[0] = new GoalInfo(new Position(-1, 12), 0);
+        goals[0] = new GoalInfo(new Position(-1, 1), 0);
         goals[1] = new GoalInfo(new Position(-1, 24), 1);
         goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 12), 1);
         goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 24), 0);
@@ -104,6 +104,7 @@ public class Grid : MonoBehaviour
         List<Position> path = null;
         if(minGoal != null)
             path = CreatePath(dc.paths, minGoal);
+        Debug.Log(path);
         return path;
     }
 

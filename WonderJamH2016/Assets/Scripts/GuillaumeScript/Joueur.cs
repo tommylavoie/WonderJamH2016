@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Joueur : MonoBehaviour {
 
@@ -101,6 +102,8 @@ public class Joueur : MonoBehaviour {
                 myCancer.GetComponent<CancerScript>().grid = grid;
                 grid.SetElement(Grid.CELL, new Position(indexLigne, indexCol));
                 depenserResource(coutCell);
+
+               List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
             
         }
