@@ -98,6 +98,7 @@ public class Joueur : MonoBehaviour {
 
             if (PeutIlAcheter(coutCell))
             {
+                Debug.Log(coutCell);
                 GameObject myCancer = Instantiate(cell, transform.position, Quaternion.identity) as GameObject;
                 myCancer.GetComponent<CancerScript>().indexCol = indexCol;
                 myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
@@ -136,7 +137,7 @@ public class Joueur : MonoBehaviour {
     {
         if (PeutIlAcheter(coutBomb))
         {
-            Instantiate(cancer, transform.position, Quaternion.identity);
+            Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
         }
     }
@@ -145,6 +146,12 @@ public class Joueur : MonoBehaviour {
     {
         grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
         GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
+
+        if(o.tag == "Cell" || o.tag == "Cancer")
+        {
+            o.GetComponent<CancerScript>().Hurt();
+        }
+
         cellGrid.RemoveElement(new Position(indexLigne, indexCol));
         Destroy(o);
         pathfinder.UpdateShortestPaths();

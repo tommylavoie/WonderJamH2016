@@ -34,6 +34,7 @@ public class Lumiere : MonoBehaviour {
 
     public void updateTaPosition()
     {
+        Debug.Log("Je suis dans mon update");
         //Verification si je suis rendu au goal
         if (maGrid.GetShortestConnection(positionCourante).Count > 1)
         {
