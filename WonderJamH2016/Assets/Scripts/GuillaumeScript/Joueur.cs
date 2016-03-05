@@ -136,20 +136,18 @@ public class Joueur : MonoBehaviour {
 
     public void updaterScoreUI()
     {
-        //scoreUI.GetComponent<Text>().text = score.ToString();
+        scoreUI.GetComponent<Text>().text = score.ToString();
     }
 
     public void updaterResourceUI()
     {
-        //resourceUI.GetComponent<Text>().text = resource.ToString();
+        resourceUI.GetComponent<Text>().text = resource.ToString();
     }
 
     //Fonction qui permet de savoir si un objet est deja dans la case
     public string dejaQuelqueChoseALaCase()
     {
         hit = Physics2D.Raycast(transform.position, Vector2.zero);
-
-        Debug.Log(hit.collider);
 
         if(hit.collider != null)
         {

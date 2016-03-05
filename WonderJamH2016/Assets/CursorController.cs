@@ -4,6 +4,7 @@ using System.Collections;
 public class CursorController : MonoBehaviour {
 
     public GameObject Joueur;
+    public float commentTasser;
 
     public string nomHori;
     public string nomVerti;
@@ -23,6 +24,7 @@ public class CursorController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         mySpriteRender = sizeGameObject.GetComponent<SpriteRenderer>();
+        Debug.Log(mySpriteRender.bounds.size);
 	}
 	
 	// Update is called once per frame
@@ -95,9 +97,9 @@ public class CursorController : MonoBehaviour {
             {
                 if(transform.position.x < maxDistanceHori && transform.position.y < maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(0.6f, 0, 0));
+                    transform.Translate(new Vector3(commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol++;
-                    transform.Translate(new Vector3(0, 0.6f, 0));
+                    transform.Translate(new Vector3(0, commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -106,9 +108,9 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.x > -maxDistanceHori && transform.position.y < maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(-0.6f, 0, 0));
+                    transform.Translate(new Vector3(-commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol--;
-                    transform.Translate(new Vector3(0, 0.6f, 0));
+                    transform.Translate(new Vector3(0, commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -118,9 +120,9 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.x < maxDistanceHori && transform.position.y > -maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(0.6f, 0, 0));
+                    transform.Translate(new Vector3(commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol++;
-                    transform.Translate(new Vector3(0, -0.6f, 0));
+                    transform.Translate(new Vector3(0, -commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -130,9 +132,9 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.x > -maxDistanceHori && transform.position.y > -maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(-0.6f, 0, 0));
+                    transform.Translate(new Vector3(-commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol--;
-                    transform.Translate(new Vector3(0, -0.6f, 0));
+                    transform.Translate(new Vector3(0, -commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -142,7 +144,7 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.x < maxDistanceHori)
                 {
-                    transform.Translate(new Vector3(0.6f, 0, 0));
+                    transform.Translate(new Vector3(commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -152,7 +154,7 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.y < maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(0, 0.6f, 0));
+                    transform.Translate(new Vector3(0, commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -162,7 +164,7 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.x > -maxDistanceHori)
                 {
-                    transform.Translate(new Vector3(-0.6f, 0, 0));
+                    transform.Translate(new Vector3(-commentTasser, 0, 0));
                     Joueur.GetComponent<Joueur>().indexCol--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
@@ -172,7 +174,7 @@ public class CursorController : MonoBehaviour {
             {
                 if (transform.position.y > -maxDistanceVerti)
                 {
-                    transform.Translate(new Vector3(0, -0.6f, 0));
+                    transform.Translate(new Vector3(0, -commentTasser, 0));
                     Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
