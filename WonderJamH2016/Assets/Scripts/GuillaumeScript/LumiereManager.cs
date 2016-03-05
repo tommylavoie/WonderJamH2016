@@ -61,9 +61,11 @@ public class LumiereManager : MonoBehaviour {
 
     public void unTic()
     {
+        Debug.Log("un tic");
         for(int i = 0; i < poolDesLumiereGameObject.Length; i++)
         {
             poolDesLumiereGameObject[i].GetComponent<Lumiere>().updateTaPosition();
+            poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
         }
     }
 
