@@ -53,13 +53,8 @@ public class LumiereManager : MonoBehaviour
             compteur++;
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
-<<<<<<< HEAD
-            poolDesLumiereGameObject[compteur].GetComponent<Lumiere>().initialiserLumiere(leTableau[i].x + 1, leTableau[i].y, laGrid);
-        
-=======
             poolDesLumiereGameObject[compteur].GetComponent<Lumiere>().initialiserLumiere(leTableau[i].x + 1, leTableau[i].y, laGrid, joueur1, joueur2);
 
->>>>>>> 2ecb5e1fc0bafb6aeb7c6fc66b5a0123b568c3cc
             compteur++;
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
@@ -73,21 +68,13 @@ public class LumiereManager : MonoBehaviour
 
     public void unTic()
     {
-<<<<<<< HEAD
-        Debug.Log("un tic");
-        for(int i = 0; i < poolDesLumiereGameObject.Length; i++)
-=======
         for (int i = 0; i < poolDesLumiereGameObject.Length; i++)
->>>>>>> fce43e6b2fc332c519b5e5de6cad0f11a74f861d
         {
             Lumiere lumiere = poolDesLumiereGameObject[i].GetComponent<Lumiere>();
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]--;
             poolDesLumiereGameObject[i].GetComponent<Lumiere>().updateTaPosition();
-<<<<<<< HEAD
             poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
-=======
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]++;
->>>>>>> fce43e6b2fc332c519b5e5de6cad0f11a74f861d
         }
         testCollisions();
     }
