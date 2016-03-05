@@ -12,7 +12,6 @@ public class Grid : MonoBehaviour
 	void Start ()
     {
         Init();
-        testFill();
     }
 
     void Init()
@@ -39,6 +38,11 @@ public class Grid : MonoBehaviour
         return grid;
     }
 
+    public int GetElement(int row, int col)
+    {
+        return grid[row, col];
+    }
+
     public GoalInfo[] getGoals()
     {
         return goals;
@@ -47,7 +51,7 @@ public class Grid : MonoBehaviour
     public void SetElement(int element, Position position)
     {
         if (position.x >= 0 && position.x < NUMBER_OF_ROWS && position.y >= 0 && 
-            position.y < NUMBER_OF_COLS && element >=0 && element < 5)
+            position.y < NUMBER_OF_COLS)
             grid[position.x, position.y] = element;
     }
 
@@ -112,13 +116,28 @@ public class Grid : MonoBehaviour
         GetShortestConnection(new Position(1, 1));
     }
 
-    public static int NUMBER_OF_ROWS = 15;
-    public static int NUMBER_OF_COLS = 15;
+    public void print()
+    {
+        for (int i = 0; i < NUMBER_OF_ROWS; i++)
+        {
+            String printing = "";
+            for (int j = 0; j < NUMBER_OF_COLS; j++)
+            {
+                printing += grid[i, j] + ",";
+            }
+            Debug.Log(printing);
+        }
+    }
+
+    public static int NUMBER_OF_ROWS = 24;
+    public static int NUMBER_OF_COLS = 18;
     public static int NUMBER_OF_GOALS = 2;
 
     public static int EMPTY = 0;
     public static int CELL = 1;
     public static int GOAL_1 = 2;
     public static int GOAL_2 = 3;
-    public static int DEAD_CELL = 4;
+    public static int SPAWN = 4;
+    public static int MINE = 5;
+    public static int DEAD_CELL = 6;
 }
