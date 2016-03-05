@@ -24,7 +24,13 @@ public class Grid : MonoBehaviour
                 grid[i,j] = 0;
             }
         }
-        goals = new GoalInfo[2];
+        goals = new GoalInfo[6];
+        goals[0] = new GoalInfo(new Position(-1, 12), 0);
+        goals[1] = new GoalInfo(new Position(-1, 24), 1);
+        goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 12), 1);
+        goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 24), 0);
+        goals[4] = new GoalInfo(new Position(8, -1), 0);
+        goals[5] = new GoalInfo(new Position(8, NUMBER_OF_COLS), 1);
     }
 	
 	// Update is called once per frame
@@ -77,7 +83,7 @@ public class Grid : MonoBehaviour
         return list;
     }
 
-    List<Position> GetShortestConnection(Position start)
+    public List<Position> GetShortestConnection(Position start)
     {
         DijkstraCalculator dc = new DijkstraCalculator();
         int[,] results = dc.GetShortestPath(this, start);
@@ -111,8 +117,6 @@ public class Grid : MonoBehaviour
         grid[3, 2] = 1;
         grid[3, 1] = 1;
         grid[4, 1] = 1;
-        goals[0] = new GoalInfo(new Position(-1, 1));
-        goals[1] = new GoalInfo(new Position(NUMBER_OF_ROWS, 1));
         GetShortestConnection(new Position(1, 1));
     }
 
@@ -129,8 +133,8 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public static int NUMBER_OF_ROWS = 24;
-    public static int NUMBER_OF_COLS = 18;
+    public static int NUMBER_OF_ROWS = 36;
+    public static int NUMBER_OF_COLS = 16;
     public static int NUMBER_OF_GOALS = 2;
 
     public static int EMPTY = 0;

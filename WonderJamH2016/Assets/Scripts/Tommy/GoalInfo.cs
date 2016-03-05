@@ -6,10 +6,17 @@ using System.Text;
 public class GoalInfo
 {
     Position position;
+    int player;
 
-    public GoalInfo(Position p)
+    public GoalInfo(Position p, int player)
     {
         this.position = p;
+        this.player = player;
+    }
+
+    public int GetPlayerNumber()
+    {
+        return player;
     }
 
     public Position getCellConnectedToGoal()
