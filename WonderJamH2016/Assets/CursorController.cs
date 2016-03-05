@@ -41,6 +41,11 @@ public class CursorController : MonoBehaviour {
             Joueur.GetComponent<Joueur>().placerCancer();
         }
 
+        if(Input.GetButtonDown(nomButtonHammer))
+        {
+            Joueur.GetComponent<Joueur>().faireHammer();
+        }
+
         if (CanPress)
         {
             

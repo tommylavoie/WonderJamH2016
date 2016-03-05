@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GridGenerator : MonoBehaviour
 {
+    public LumiereManager lumiereManager;
+
     Grid grid;
     public int Spawners = 0;
     public int Mines = 0;
@@ -118,7 +120,5 @@ public class GridGenerator : MonoBehaviour
 
         //Liste de spawners
         setSpawners();
-
-        grid.print();
     }
 }

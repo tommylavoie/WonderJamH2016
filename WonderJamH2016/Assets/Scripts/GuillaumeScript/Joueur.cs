@@ -19,6 +19,8 @@ public class Joueur : MonoBehaviour {
     public int coutBomb;
 
     public Grid grid;
+    public CellGrid cellGrid;
+    public Pathfinder pathfinder;
 
     public int indexLigne;
     public int indexCol;
@@ -101,6 +103,8 @@ public class Joueur : MonoBehaviour {
                 myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
                 myCancer.GetComponent<CancerScript>().grid = grid;
                 grid.SetElement(Grid.CELL, new Position(indexLigne, indexCol));
+                cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
+                pathfinder.UpdateShortestPaths();
                 depenserResource(coutCell);
 
                List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
@@ -135,6 +139,15 @@ public class Joueur : MonoBehaviour {
             Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
         }
+    }
+
+    public void faireHammer()
+    {
+        grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
+        cellGrid.RemoveElement(new Position(indexLigne, indexCol));
+        Destroy(o);
+        pathfinder.UpdateShortestPaths();
     }
 
     public void updaterScoreUI()
