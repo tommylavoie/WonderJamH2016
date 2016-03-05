@@ -12,7 +12,6 @@ public class Grid : MonoBehaviour
 	void Start ()
     {
         Init();
-        testFill();
     }
 
     void Init()
@@ -25,7 +24,13 @@ public class Grid : MonoBehaviour
                 grid[i,j] = 0;
             }
         }
-        goals = new GoalInfo[2];
+        goals = new GoalInfo[6];
+        goals[0] = new GoalInfo(new Position(-1, 12), 0);
+        goals[1] = new GoalInfo(new Position(-1, 24), 1);
+        goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 12), 1);
+        goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 24), 0);
+        goals[4] = new GoalInfo(new Position(8, -1), 0);
+        goals[5] = new GoalInfo(new Position(8, NUMBER_OF_COLS), 1);
     }
 	
 	// Update is called once per frame
@@ -39,6 +44,11 @@ public class Grid : MonoBehaviour
         return grid;
     }
 
+    public int GetElement(int row, int col)
+    {
+        return grid[row, col];
+    }
+
     public GoalInfo[] getGoals()
     {
         return goals;
@@ -47,7 +57,7 @@ public class Grid : MonoBehaviour
     public void SetElement(int element, Position position)
     {
         if (position.x >= 0 && position.x < NUMBER_OF_ROWS && position.y >= 0 && 
-            position.y < NUMBER_OF_COLS && element >=0 && element < 5)
+            position.y < NUMBER_OF_COLS)
             grid[position.x, position.y] = element;
     }
 
@@ -73,7 +83,11 @@ public class Grid : MonoBehaviour
         return list;
     }
 
+<<<<<<< HEAD
    public List<Position> GetShortestConnection(Position start)
+=======
+    public List<Position> GetShortestConnection(Position start)
+>>>>>>> c1b1f1fc34132e3484a272e89aba3bfded82fb78
     {
         DijkstraCalculator dc = new DijkstraCalculator();
         int[,] results = dc.GetShortestPath(this, start);
@@ -107,18 +121,32 @@ public class Grid : MonoBehaviour
         grid[3, 2] = 1;
         grid[3, 1] = 1;
         grid[4, 1] = 1;
-        goals[0] = new GoalInfo(new Position(-1, 1));
-        goals[1] = new GoalInfo(new Position(NUMBER_OF_ROWS, 1));
         GetShortestConnection(new Position(1, 1));
     }
 
-    public static int NUMBER_OF_ROWS = 15;
-    public static int NUMBER_OF_COLS = 15;
+    public void print()
+    {
+        for (int i = 0; i < NUMBER_OF_ROWS; i++)
+        {
+            String printing = "";
+            for (int j = 0; j < NUMBER_OF_COLS; j++)
+            {
+                printing += grid[i, j] + ",";
+            }
+            Debug.Log(printing);
+        }
+    }
+
+    public static int NUMBER_OF_ROWS = 36;
+    public static int NUMBER_OF_COLS = 16;
     public static int NUMBER_OF_GOALS = 2;
 
     public static int EMPTY = 0;
     public static int CELL = 1;
     public static int GOAL_1 = 2;
     public static int GOAL_2 = 3;
-    public static int DEAD_CELL = 4;
+    public static int SPAWN = 4;
+    public static int MINE = 5;
+    public static int DEAD_CELL = 6;
+    public static int RESSOURCE = 7;
 }
