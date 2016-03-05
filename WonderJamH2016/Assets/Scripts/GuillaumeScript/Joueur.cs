@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Joueur : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class Joueur : MonoBehaviour {
     public int coutBomb;
 
     public Grid grid;
+    public CellGrid cellGrid;
+    public Pathfinder pathfinder;
 
     public int indexLigne;
     public int indexCol;
@@ -100,7 +103,11 @@ public class Joueur : MonoBehaviour {
                 myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
                 myCancer.GetComponent<CancerScript>().grid = grid;
                 grid.SetElement(Grid.CELL, new Position(indexLigne, indexCol));
+                cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
+                pathfinder.UpdateShortestPaths();
                 depenserResource(coutCell);
+
+               List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
             
         }
@@ -129,27 +136,34 @@ public class Joueur : MonoBehaviour {
     {
         if (PeutIlAcheter(coutBomb))
         {
-            Instantiate(cancer, transform.position, Quaternion.identity);
+            Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
         }
     }
 
+    public void faireHammer()
+    {
+        grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
+        cellGrid.RemoveElement(new Position(indexLigne, indexCol));
+        Destroy(o);
+        pathfinder.UpdateShortestPaths();
+    }
+
     public void updaterScoreUI()
     {
-        //scoreUI.GetComponent<Text>().text = score.ToString();
+        scoreUI.GetComponent<Text>().text = score.ToString();
     }
 
     public void updaterResourceUI()
     {
-        //resourceUI.GetComponent<Text>().text = resource.ToString();
+        resourceUI.GetComponent<Text>().text = resource.ToString();
     }
 
     //Fonction qui permet de savoir si un objet est deja dans la case
     public string dejaQuelqueChoseALaCase()
     {
         hit = Physics2D.Raycast(transform.position, Vector2.zero);
-
-        Debug.Log(hit.collider);
 
         if(hit.collider != null)
         {

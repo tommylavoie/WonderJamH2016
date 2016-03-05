@@ -7,11 +7,13 @@ public class Grid : MonoBehaviour
 {
     int[,] grid;
     GoalInfo[] goals;
+    Position[] spawners;
 
 	// Use this for initialization
 	void Start ()
     {
         Init();
+        Debug.Log("WTF");
     }
 
     void Init()
@@ -25,7 +27,7 @@ public class Grid : MonoBehaviour
             }
         }
         goals = new GoalInfo[6];
-        goals[0] = new GoalInfo(new Position(-1, 12), 0);
+        goals[0] = new GoalInfo(new Position(-1, 1), 0);
         goals[1] = new GoalInfo(new Position(-1, 24), 1);
         goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 12), 1);
         goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 24), 0);
@@ -54,11 +56,32 @@ public class Grid : MonoBehaviour
         return goals;
     }
 
+    public Position[] getSpawners()
+    {
+        return spawners;
+    }
+
+    public void setSpawners(Position[] s)
+    {
+        spawners = s;
+    }
+
     public void SetElement(int element, Position position)
     {
         if (position.x >= 0 && position.x < NUMBER_OF_ROWS && position.y >= 0 && 
             position.y < NUMBER_OF_COLS)
             grid[position.x, position.y] = element;
+    }
+
+    public GoalInfo GetAssociatedGoal(Position association)
+    {
+        foreach(GoalInfo goal in goals)
+        {
+            Position goalConnected = goal.getCellConnectedToGoal();
+            if (association.x == goalConnected.x && association.y == goalConnected.y)
+                return goal;
+        }
+        return null;
     }
 
     List<Position> CreatePath(Position[,] paths, Position goal)
@@ -83,6 +106,7 @@ public class Grid : MonoBehaviour
         return list;
     }
 
+
     public List<Position> GetShortestConnection(Position start)
     {
         DijkstraCalculator dc = new DijkstraCalculator();
@@ -100,8 +124,10 @@ public class Grid : MonoBehaviour
         }
 
         List<Position> path = null;
-        if(minGoal != null)
+        if (minGoal != null)
             path = CreatePath(dc.paths, minGoal);
+        else
+            path = new List<Position>();
         return path;
     }
 
@@ -133,8 +159,8 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public static int NUMBER_OF_ROWS = 36;
-    public static int NUMBER_OF_COLS = 16;
+    public static int NUMBER_OF_ROWS = 16;
+    public static int NUMBER_OF_COLS = 36;
     public static int NUMBER_OF_GOALS = 2;
 
     public static int EMPTY = 0;

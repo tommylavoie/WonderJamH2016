@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GridGenerator : MonoBehaviour
 {
+    public LumiereManager lumiereManager;
+
     Grid grid;
     public int Spawners = 0;
     public int Mines = 0;
@@ -15,6 +17,7 @@ public class GridGenerator : MonoBehaviour
     {
         grid = GetComponent<Grid>();
         Generate();
+        
 	}
 	
 	// Update is called once per frame
@@ -50,6 +53,24 @@ public class GridGenerator : MonoBehaviour
             }
             leftSide--;
         }
+    }
+
+    void setSpawners()
+    {
+        Position[] spawners = new Position[Spawners + Mines];
+        int k = 0;
+        for (int i = 0; i < Grid.NUMBER_OF_ROWS; i++)
+        {
+            for (int j = 0; j < Grid.NUMBER_OF_COLS; j++)
+            {
+                if (grid.GetElement(i, j) == Grid.SPAWN || grid.GetElement(i, j) == Grid.MINE)
+                {
+                    spawners[k] = new Position(i, j);
+                    k++;
+                }
+            }
+        }
+        grid.setSpawners(spawners);
     }
 
     void Generate()
@@ -96,5 +117,8 @@ public class GridGenerator : MonoBehaviour
 
         //Reproduis la partie de la grille vers le cote droit
         DoSymmetry();
+
+        //Liste de spawners
+        setSpawners();
     }
 }

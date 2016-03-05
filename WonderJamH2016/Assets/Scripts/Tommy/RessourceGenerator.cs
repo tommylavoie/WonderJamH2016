@@ -67,8 +67,11 @@ public class RessourceGenerator : MonoBehaviour
         {
             Debug.Log("New Item!");
             Position emptyCell = getEmptyCell();
-            if(emptyCell != null)
+            if (emptyCell != null)
+            {
                 grid.SetElement(Grid.RESSOURCE, emptyCell);
+                grid.GetComponent<mapInitialiser>().addRessourceOnMap(emptyCell.x, emptyCell.y);
+            }
         }
     }
 }
