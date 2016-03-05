@@ -54,10 +54,7 @@ public class LumiereManager : MonoBehaviour
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
             poolDesLumiereGameObject[compteur].GetComponent<Lumiere>().initialiserLumiere(leTableau[i].x + 1, leTableau[i].y, laGrid, joueur1, joueur2);
-<<<<<<< HEAD
-=======
 
->>>>>>> 2f524b52bbb6dda2b8a23a1ffa166e2cbb297606
             compteur++;
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);

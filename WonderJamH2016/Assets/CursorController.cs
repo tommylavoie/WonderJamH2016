@@ -205,8 +205,7 @@ public class CursorController : MonoBehaviour {
         if(other.tag == "Eclair")
         {
             Joueur.GetComponent<Joueur>().addResource(Joueur.GetComponent<Joueur>().valeurEclair);
-            Destroy(other.gameObject);
-            grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+            other.GetComponent<EclairScript>().RammaserEclair();
         }
     }
 
