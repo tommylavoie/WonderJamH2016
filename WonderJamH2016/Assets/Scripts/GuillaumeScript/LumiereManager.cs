@@ -15,6 +15,7 @@ public class LumiereManager : MonoBehaviour
     public Joueur joueur2;
 
     public GameObject laLumiere;
+    public scriptExplosion explosion;
 
     int[,] lightGrid;
 
@@ -53,6 +54,10 @@ public class LumiereManager : MonoBehaviour
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
             poolDesLumiereGameObject[compteur].GetComponent<Lumiere>().initialiserLumiere(leTableau[i].x + 1, leTableau[i].y, laGrid, joueur1, joueur2);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f524b52bbb6dda2b8a23a1ffa166e2cbb297606
             compteur++;
 
             poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
@@ -71,6 +76,7 @@ public class LumiereManager : MonoBehaviour
             Lumiere lumiere = poolDesLumiereGameObject[i].GetComponent<Lumiere>();
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]--;
             poolDesLumiereGameObject[i].GetComponent<Lumiere>().updateTaPosition();
+            poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]++;
         }
         testCollisions();
@@ -101,7 +107,9 @@ public class LumiereManager : MonoBehaviour
                     {
                         Lumiere l = o.GetComponent<Lumiere>();
                         l.positionCourante = l.startPosition;
-
+                        l.updaterMaPositionDansLeMondeDuJeu(l.positionCourante);
+                        Vector2 place = new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f));
+                        Instantiate(explosion, place, Quaternion.identity);
                     }
                 }
             }

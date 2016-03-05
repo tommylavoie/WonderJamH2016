@@ -9,7 +9,7 @@ public class CancerScript : MonoBehaviour {
 
     public int VieMax;
     public int VieActuelle;
-    private bool BarDeVieEstVisible;
+    private bool BarDeVieEstVisible = false;
 
     public GameObject bareDeVie;
 
@@ -28,7 +28,7 @@ public class CancerScript : MonoBehaviour {
         {
             if(BarDeVieEstVisible == false)
             {
-                MabareDeVie = Instantiate(bareDeVie, transform.position, Quaternion.identity) as GameObject;
+                MabareDeVie = Instantiate(bareDeVie, new Vector2(transform.position.x - GetComponent<SpriteRenderer>().bounds.size.x/2, transform.position.y + GetComponent<SpriteRenderer>().bounds.size.y), Quaternion.identity) as GameObject;
                 MabareDeVie.transform.parent = gameObject.transform;
                 MabareDeVie.GetComponent<barreDeVieScript>().maxVie = VieMax;
                 BarDeVieEstVisible = true;
@@ -43,7 +43,9 @@ public class CancerScript : MonoBehaviour {
 
     public void DestroyLeBloc()
     {
+        grid.GetComponent<CellGrid>().RemoveElement(new Position(indexLigne, indexCol));
         grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        grid.GetComponent<Pathfinder>().UpdateShortestPaths();
         Destroy(gameObject);
     }
 
