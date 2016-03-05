@@ -144,17 +144,12 @@ public class Joueur : MonoBehaviour {
 
     public void faireHammer()
     {
-        grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
         GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
 
-        if(o.tag == "Cell" || o.tag == "Cancer")
+        if(o != null && o.tag == "Cell" || o.tag == "Cancer")
         {
             o.GetComponent<CancerScript>().Hurt();
         }
-
-        cellGrid.RemoveElement(new Position(indexLigne, indexCol));
-        Destroy(o);
-        pathfinder.UpdateShortestPaths();
     }
 
     public void updaterScoreUI()
