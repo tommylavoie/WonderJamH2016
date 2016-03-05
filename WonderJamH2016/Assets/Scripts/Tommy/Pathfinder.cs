@@ -85,6 +85,7 @@ public class Pathfinder : MonoBehaviour
         Position[] spawners = grid.getSpawners();
         foreach(Position s in spawners)
         {
+            Debug.Log("??");
             UpdateSpawner(s);
         }
     }

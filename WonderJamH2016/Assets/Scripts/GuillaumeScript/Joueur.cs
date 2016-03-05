@@ -29,10 +29,12 @@ public class Joueur : MonoBehaviour {
     RaycastHit2D hit;
 
     public GameObject textUp;
+    public scriptTextUp textUpChild;
 
 	// Use this for initialization
 	void Start () {
         setScore(score);
+        textUpChild = textUp.GetComponentInChildren<scriptTextUp>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +58,7 @@ public class Joueur : MonoBehaviour {
         resource = resource = nbrDeResourceGagner;
         updaterResourceUI();
         GameObject myTextUP =  Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        myTextUP.GetComponent<scriptTextUp>().setText("" + valeurEclair);
+        textUpChild.setText("" + nbrDeResourceGagner);
 
     }
 
@@ -66,7 +68,7 @@ public class Joueur : MonoBehaviour {
         updaterResourceUI();
 
         GameObject myTextUP = Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        myTextUP.GetComponent<scriptTextUp>().setText("-" + valeurEclair);
+        textUpChild.setText("-" + nbrDeResourceDepenser);
     }
 
     public bool PeutIlAcheter(int nbrDeResouceNecessaire)

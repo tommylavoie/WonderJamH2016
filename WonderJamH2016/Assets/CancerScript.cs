@@ -39,6 +39,7 @@ public class CancerScript : MonoBehaviour {
         if(VieActuelle < 1)
         {
             DestroyLeBloc();
+            grid.GetComponent<Pathfinder>().UpdateShortestPaths();
         }
 	}
 
@@ -46,7 +47,6 @@ public class CancerScript : MonoBehaviour {
     {
         grid.GetComponent<CellGrid>().RemoveElement(new Position(indexLigne, indexCol));
         grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
-        grid.GetComponent<Pathfinder>().UpdateShortestPaths();
         Destroy(gameObject);
     }
 
