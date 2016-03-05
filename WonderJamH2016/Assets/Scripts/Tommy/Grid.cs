@@ -140,4 +140,5 @@ public class Grid : MonoBehaviour
     public static int SPAWN = 4;
     public static int MINE = 5;
     public static int DEAD_CELL = 6;
+    public static int RESSOURCE = 7;
 }
