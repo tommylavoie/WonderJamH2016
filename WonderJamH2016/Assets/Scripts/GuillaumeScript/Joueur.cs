@@ -136,7 +136,7 @@ public class Joueur : MonoBehaviour {
     {
         if (PeutIlAcheter(coutBomb))
         {
-            Instantiate(cancer, transform.position, Quaternion.identity);
+            Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
         }
     }
