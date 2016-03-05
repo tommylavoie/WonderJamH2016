@@ -6,9 +6,9 @@ public class Pathfinder : MonoBehaviour
 {
     Grid grid;
     CellGrid cellGrid;
-    public Sprite defaultSprite;
-    public Sprite firstPlayerSprite;
-    public Sprite secondPlayerSprite;
+    public RuntimeAnimatorController defaultSprite;
+    public RuntimeAnimatorController firstPlayerSprite;
+    public RuntimeAnimatorController secondPlayerSprite;
 
 	// Use this for initialization
 	void Start ()
@@ -23,10 +23,11 @@ public class Pathfinder : MonoBehaviour
 	    
 	}
 
-    void ChangeSprite(GameObject gameObject, Sprite sprite)
+    void ChangeSprite(GameObject gameObject, RuntimeAnimatorController sprite)
     {
-        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-        renderer.sprite = sprite;
+        Debug.Log("CHANGE");
+        Animator renderer = gameObject.GetComponent<Animator>();
+        renderer.runtimeAnimatorController = sprite;
     }
 
     void ResetPaths()
@@ -49,7 +50,7 @@ public class Pathfinder : MonoBehaviour
         {
             if (cellGrid.GetElement(new Position(node.x, node.y)) != null)
             {
-                Sprite sprite = firstPlayerSprite;
+                RuntimeAnimatorController sprite = firstPlayerSprite;
                 if (player == 1)
                     sprite = secondPlayerSprite;
                 ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), sprite);
