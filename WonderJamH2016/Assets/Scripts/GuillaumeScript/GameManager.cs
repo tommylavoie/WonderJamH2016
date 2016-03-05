@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
             minutes = Mathf.Floor(leTemps / 60).ToString("0");
             seconds = Mathf.Floor(leTemps % 60).ToString("00");
 
-           // leTimer.GetComponent<Text>().text = minutes + ":" + seconds;
+            leTimer.GetComponent<Text>().text = minutes + " : " + seconds;
 
             //Debug.Log("Le temps : " + minutes + ":" + seconds);
 

@@ -14,7 +14,7 @@ public class Joueur : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        setScore(score);
 	}
 	
 	// Update is called once per frame
@@ -77,12 +77,12 @@ public class Joueur : MonoBehaviour {
 
     public void updaterScoreUI()
     {
-        //scoreUI.GetComponent<Text>().text = score.ToString();
+        scoreUI.GetComponent<Text>().text = score.ToString();
     }
 
     public void updaterResourceUI()
     {
-        //resourceUI.GetComponent<Text>().text = resource.ToString();
+        resourceUI.GetComponent<Text>().text = resource.ToString();
     }
 
     //Fonction qui permet de savoir si un objet est deja dans la case

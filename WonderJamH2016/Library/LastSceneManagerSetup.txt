@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/Guillaume.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Cri.unity
-=======
-- path: Assets/Scenes/TommyMapPowa.unity
->>>>>>> 8796ea20baec1f9f20f3acaa6dd52c17d0bf2f66
->>>>>>> 5d2160c6e6b352a7f3094584f7f169615123745e
   isLoaded: 1
   isActive: 1
