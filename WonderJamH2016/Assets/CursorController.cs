@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class CursorController : MonoBehaviour {
+    public GameObject Joueur;
 
     public string nomHori;
     public string nomVerti;
@@ -11,10 +12,6 @@ public class CursorController : MonoBehaviour {
     public string nomButtonHammer;
     public string nomButtonCancer;
     public string nomButtonBomb;
-
-    public GameObject cell;
-    public GameObject bomb;
-    public GameObject cancer;
 
     public GameObject sizeGameObject;
     public float timeBetwenMove;
@@ -32,8 +29,8 @@ public class CursorController : MonoBehaviour {
 
         if (Input.GetButtonDown(nomButtonPlaceCell))
         {
-            Debug.Log(nomButtonPlaceCell);
-            Instantiate(cell, transform.position, Quaternion.identity);
+            Debug.Log("Penis");
+            Joueur.GetComponent<Joueur>().placerCell();
         }
 
         if (CanPress)
