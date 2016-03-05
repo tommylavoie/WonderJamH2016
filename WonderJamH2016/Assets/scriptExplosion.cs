@@ -16,13 +16,17 @@ public class scriptExplosion : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Cell" || other.gameObject.tag == "Cancer")
-            DestroyObject(gameObject);
+        {
+            Debug.Log("Cest un cellule");
+            DestroyObject(other);
+        }
+            
 
     }
 
     public void DestroyObject(Collider2D other)
     {
-        gameObject.GetComponent<CancerScript>().DestroyLeBloc();
+        other.gameObject.GetComponent<CancerScript>().DestroyLeBloc();
     }
 
     public void Destroy()
