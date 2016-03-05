@@ -2,18 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LumiereManager : MonoBehaviour {
+{
 
-   int grosseurTableau;
-   public Lumiere[] poolDesLumiere;
-   public GameObject[] poolDesLumiereGameObject;
-   int compteur = 0;
-   public Grid laGrid;
+    int grosseurTableau;
+    public Lumiere[] poolDesLumiere;
+    public GameObject[] poolDesLumiereGameObject;
+    int compteur = 0;
+    public Grid laGrid;
 
     public Joueur joueur1;
     public Joueur joueur2;
 
-   public GameObject laLumiere;
+    public GameObject laLumiere;
 
     int[,] lightGrid;
 
@@ -22,12 +22,13 @@ public class LumiereManager : MonoBehaviour {
     {
         lightGrid = new int[Grid.NUMBER_OF_ROWS, Grid.NUMBER_OF_COLS];
         initialiserMonTableau(laGrid.getSpawners());
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void initialiserMonTableau(Position[] leTableau)
     {
@@ -39,7 +40,7 @@ public class LumiereManager : MonoBehaviour {
         for (int i = 0; i < leTableau.Length; i++)
         {
 
-            poolDesLumiereGameObject[compteur] =  (GameObject) Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
+            poolDesLumiereGameObject[compteur] = (GameObject)Instantiate(laLumiere, Vector2.zero, Quaternion.identity);
             poolDesLumiereGameObject[compteur].GetComponent<Lumiere>().initialiserLumiere(leTableau[i].x - 1, leTableau[i].y, laGrid, joueur1, joueur2);
 
             compteur++;
@@ -65,7 +66,7 @@ public class LumiereManager : MonoBehaviour {
 
     public void unTic()
     {
-        for(int i = 0; i < poolDesLumiereGameObject.Length; i++)
+        for (int i = 0; i < poolDesLumiereGameObject.Length; i++)
         {
             Lumiere lumiere = poolDesLumiereGameObject[i].GetComponent<Lumiere>();
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]--;
