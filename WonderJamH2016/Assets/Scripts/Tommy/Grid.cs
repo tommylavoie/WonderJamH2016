@@ -13,6 +13,7 @@ public class Grid : MonoBehaviour
 	void Start ()
     {
         Init();
+        Debug.Log("WTF");
     }
 
     void Init()
@@ -105,6 +106,7 @@ public class Grid : MonoBehaviour
         return list;
     }
 
+
     public List<Position> GetShortestConnection(Position start)
     {
         DijkstraCalculator dc = new DijkstraCalculator();
@@ -155,8 +157,8 @@ public class Grid : MonoBehaviour
         }
     }
 
-    public static int NUMBER_OF_ROWS = 36;
-    public static int NUMBER_OF_COLS = 16;
+    public static int NUMBER_OF_ROWS = 16;
+    public static int NUMBER_OF_COLS = 36;
     public static int NUMBER_OF_GOALS = 2;
 
     public static int EMPTY = 0;

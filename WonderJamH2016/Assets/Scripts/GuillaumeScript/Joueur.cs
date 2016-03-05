@@ -13,6 +13,15 @@ public class Joueur : MonoBehaviour {
     public GameObject resourceUI;
     public GameObject scoreUI;
 
+    public int coutCell;
+    public int coutCancer;
+    public int coutBomb;
+
+    public Grid grid;
+
+    public int indexLigne;
+    public int indexCol;
+
     RaycastHit2D hit;
 
 	// Use this for initialization
@@ -80,39 +89,65 @@ public class Joueur : MonoBehaviour {
 
     public void placerCell()
     {
-        Debug.Log("1");
-        if(dejaQuelqueChoseALaCase() == "none" && dejaQuelqueChoseALaCase() != "Cell")
+
+        if(dejaQuelqueChoseALaCase() == "none")
         {
-            Debug.Log("2");
-            if (PeutIlAcheter(1))
+
+            if (PeutIlAcheter(coutCell))
             {
-                Debug.Log("3");
-                Instantiate(cell, transform.position, Quaternion.identity);
-                depenserResource(1);
+                GameObject myCancer = Instantiate(cell, transform.position, Quaternion.identity) as GameObject;
+                myCancer.GetComponent<CancerScript>().indexCol = indexCol;
+                myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
+                myCancer.GetComponent<CancerScript>().grid = grid;
+                grid.SetElement(Grid.CELL, new Position(indexLigne, indexCol));
+                depenserResource(coutCell);
             }
             
         }
         
     }
 
+    public void placerCancer()
+    {
+        if (dejaQuelqueChoseALaCase() == "none")
+        {
+            if (PeutIlAcheter(coutCancer))
+            {
+                GameObject myCancer = Instantiate(cancer, transform.position, Quaternion.identity) as GameObject;
+                myCancer.GetComponent<CancerScript>().indexCol = indexCol;
+                myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
+                myCancer.GetComponent<CancerScript>().grid = grid;
+                grid.SetElement(Grid.DEAD_CELL, new Position(indexLigne, indexCol));
+                depenserResource(coutCancer);
+            }
+
+        }
+
+    }
+
+    public void placerBomb()
+    {
+        if (PeutIlAcheter(coutBomb))
+        {
+            Instantiate(cancer, transform.position, Quaternion.identity);
+            depenserResource(coutBomb);
+        }
+    }
+
     public void updaterScoreUI()
     {
-        //scoreUI.GetComponent<Text>().text = score.ToString();
+        scoreUI.GetComponent<Text>().text = score.ToString();
     }
 
     public void updaterResourceUI()
     {
-        //resourceUI.GetComponent<Text>().text = resource.ToString();
+        resourceUI.GetComponent<Text>().text = resource.ToString();
     }
 
     //Fonction qui permet de savoir si un objet est deja dans la case
     public string dejaQuelqueChoseALaCase()
     {
-        Vector2 pourRayCast = new Vector2 (0.0000001f,0);
-
         hit = Physics2D.Raycast(transform.position, Vector2.zero);
-
-        Debug.Log(hit.collider);
 
         if(hit.collider != null)
         {
