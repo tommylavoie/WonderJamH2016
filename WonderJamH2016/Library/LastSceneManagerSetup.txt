@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/Cri.unity
+=======
 - path: Assets/Scenes/Tommy.unity
+>>>>>>> 2f524b52bbb6dda2b8a23a1ffa166e2cbb297606
   isLoaded: 1
   isActive: 1
