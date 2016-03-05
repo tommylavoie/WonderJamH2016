@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour {
     public float backUpDelaisEntreChaqueTic;
     //*******************************************************//
 
-
+    public Pathfinder pathfinder;
+    public bool ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
 
     void Awake()
     {
@@ -50,9 +51,18 @@ public class GameManager : MonoBehaviour {
 
         commencerTimer();
 	}
+
+    void Update()
+    {
+        if (ilYAEuUneExplosionCeTourCiSauveQuiPeut)
+        {
+            pathfinder.UpdateShortestPaths();
+            ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
+        }
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
         if(laPartieEstCommencer == true)
         {
@@ -72,9 +82,7 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Je veu un tic");
                 leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
                 delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
-
             }
-
         }
 
 	}

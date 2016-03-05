@@ -14,6 +14,8 @@ public class LumiereManager : MonoBehaviour
     public Joueur joueur1;
     public Joueur joueur2;
 
+
+
     public GameObject laLumiere;
     public scriptExplosion explosion;
 
@@ -100,14 +102,26 @@ public class LumiereManager : MonoBehaviour
                 if (lightGrid[i, j] > 1)
                 {
                     List<GameObject> lumieres = getLumieresAtPosition(new Position(i, j));
+                    List<Position> done = new List<Position>();
                     foreach(GameObject o in lumieres)
                     {
                         Lumiere l = o.GetComponent<Lumiere>();
                         l.positionCourante = l.startPosition;
                         l.updaterMaPositionDansLeMondeDuJeu(l.positionCourante);
                         Vector2 place = new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f));
-                        Instantiate(explosion, place, Quaternion.identity);
+                        bool letsGo = true;
+                        foreach(Position pos in done)
+                        {
+                            if (pos.x == i && pos.y == j)
+                                letsGo = false;
+                        }
+                        if (letsGo)
+                        {
+                            Instantiate(explosion, place, Quaternion.identity);
+                            done.Add(new Position(i, j));
+                        }
                     }
+                    lightGrid[i, j] = 0;
                 }
             }
         }

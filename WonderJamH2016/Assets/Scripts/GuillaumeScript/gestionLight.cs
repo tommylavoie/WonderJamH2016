@@ -19,7 +19,7 @@ public class gestionLight : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 
         if (updateMaLumiere == true)
         {
@@ -44,5 +44,5 @@ public class gestionLight : MonoBehaviour {
                 }
             }
         }
-	}
+	}*/
 }
