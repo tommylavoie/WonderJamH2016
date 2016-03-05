@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class CursorController : MonoBehaviour {
+
     public GameObject Joueur;
 
     public string nomHori;
@@ -29,8 +30,13 @@ public class CursorController : MonoBehaviour {
 
         if (Input.GetButtonDown(nomButtonPlaceCell))
         {
-            Debug.Log("Penis");
             Joueur.GetComponent<Joueur>().placerCell();
+        }
+
+        if (Input.GetButtonDown(nomButtonCancer))
+        {
+            Debug.Log("test");
+            Joueur.GetComponent<Joueur>().placerCancer();
         }
 
         if (CanPress)
@@ -90,7 +96,9 @@ public class CursorController : MonoBehaviour {
                 if(transform.position.x < maxDistanceHori && transform.position.y < maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol++;
                     transform.Translate(new Vector3(0, 0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
             }
@@ -99,7 +107,9 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.x > -maxDistanceHori && transform.position.y < maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(-0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol--;
                     transform.Translate(new Vector3(0, 0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -109,7 +119,9 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.x < maxDistanceHori && transform.position.y > -maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol++;
                     transform.Translate(new Vector3(0, -0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -119,7 +131,9 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.x > -maxDistanceHori && transform.position.y > -maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(-0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol--;
                     transform.Translate(new Vector3(0, -0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -129,6 +143,7 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.x < maxDistanceHori)
                 {
                     transform.Translate(new Vector3(0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -138,6 +153,7 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.y < maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(0, 0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -147,6 +163,7 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.x > -maxDistanceHori)
                 {
                     transform.Translate(new Vector3(-0.6f, 0, 0));
+                    Joueur.GetComponent<Joueur>().indexCol--;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
                 
@@ -156,6 +173,7 @@ public class CursorController : MonoBehaviour {
                 if (transform.position.y > -maxDistanceVerti)
                 {
                     transform.Translate(new Vector3(0, -0.6f, 0));
+                    Joueur.GetComponent<Joueur>().indexLigne++;
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
             }
