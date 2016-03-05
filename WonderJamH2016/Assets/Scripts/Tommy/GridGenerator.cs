@@ -61,7 +61,11 @@ public class GridGenerator : MonoBehaviour
         {
             for (int j = 0; j < Grid.NUMBER_OF_COLS; j++)
             {
-                spawners[k] = new Position(i, j);
+                if (grid.GetElement(i, j) == Grid.SPAWN || grid.GetElement(i, j) == Grid.MINE)
+                {
+                    spawners[k] = new Position(i, j);
+                    k++;
+                }
             }
         }
         grid.setSpawners(spawners);

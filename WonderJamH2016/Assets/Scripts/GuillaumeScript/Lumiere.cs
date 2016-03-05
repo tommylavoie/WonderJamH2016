@@ -20,8 +20,7 @@ public class Lumiere : MonoBehaviour {
 
     public void initialiserLumiere(int x, int y, Grid laGrid)
     {
-        startPosition.x = x;
-        startPosition.y = y;
+        startPosition = new Position(x, y);
 
         positionCourante = startPosition;
 
@@ -32,6 +31,7 @@ public class Lumiere : MonoBehaviour {
 
     public void updateTaPosition()
     {
+        Debug.Log("Je suis dans mon update");
         //Verification si je suis rendu au goal
         if (maGrid.GetShortestConnection(positionCourante).Count > 2)
         {
