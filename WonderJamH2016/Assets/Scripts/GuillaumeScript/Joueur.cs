@@ -98,6 +98,7 @@ public class Joueur : MonoBehaviour {
 
             if (PeutIlAcheter(coutCell))
             {
+                Debug.Log(coutCell);
                 GameObject myCancer = Instantiate(cell, transform.position, Quaternion.identity) as GameObject;
                 myCancer.GetComponent<CancerScript>().indexCol = indexCol;
                 myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
