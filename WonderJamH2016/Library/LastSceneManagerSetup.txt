@@ -1,4 +1,12 @@
 sceneSetups:
-- path: Assets/Scenes/TommyMapPowa.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/Antoine.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/StartScreen.unity
+=======
+- path: Assets/Scenes/Guillaume.unity
+>>>>>>> afb6e5e71285ade8c090dfc75245816ca83f46ed
+>>>>>>> cac161e077908579f14bd328f70cf47dae8e301a
   isLoaded: 1
   isActive: 1
