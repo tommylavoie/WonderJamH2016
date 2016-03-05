@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class Joueur : MonoBehaviour {
 
+    public GameObject cell;
+    public GameObject bomb;
+    public GameObject cancer;
 
     public int resource;
     public int score;
@@ -75,22 +78,41 @@ public class Joueur : MonoBehaviour {
 
     }
 
+    public void placerCell()
+    {
+        Debug.Log("1");
+        if(dejaQuelqueChoseALaCase() == "none" && dejaQuelqueChoseALaCase() != "Cell")
+        {
+            Debug.Log("2");
+            if (PeutIlAcheter(1))
+            {
+                Debug.Log("3");
+                Instantiate(cell, transform.position, Quaternion.identity);
+                depenserResource(1);
+            }
+            
+        }
+        
+    }
+
     public void updaterScoreUI()
     {
-        scoreUI.GetComponent<Text>().text = score.ToString();
+        //scoreUI.GetComponent<Text>().text = score.ToString();
     }
 
     public void updaterResourceUI()
     {
-        resourceUI.GetComponent<Text>().text = resource.ToString();
+        //resourceUI.GetComponent<Text>().text = resource.ToString();
     }
 
     //Fonction qui permet de savoir si un objet est deja dans la case
     public string dejaQuelqueChoseALaCase()
     {
-        Vector2 pourRayCast = new Vector2 (0.5f,0);
+        Vector2 pourRayCast = new Vector2 (0.0000001f,0);
 
-        hit = Physics2D.Raycast(transform.position, pourRayCast);
+        hit = Physics2D.Raycast(transform.position, Vector2.zero);
+
+        Debug.Log(hit.collider);
 
         if(hit.collider != null)
         {
