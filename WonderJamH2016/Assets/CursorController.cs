@@ -206,7 +206,6 @@ public class CursorController : MonoBehaviour {
         {
             Joueur.GetComponent<Joueur>().addResource(Joueur.GetComponent<Joueur>().valeurEclair);
             Destroy(other.gameObject);
-            grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
         }
     }
 
