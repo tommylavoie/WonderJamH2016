@@ -1,0 +1,285 @@
+fileFormatVersion: 2
+guid: 3fb2fa1917c3f714287120f9085aa77a
+timeCreated: 1457198497
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: wallConexion-Sheet_0
+    21300002: wallConexion-Sheet_1
+    21300004: wallConexion-Sheet_2
+    21300006: wallConexion-Sheet_3
+    21300008: wallConexion-Sheet_4
+    21300010: wallConexion-Sheet_5
+    21300012: wallConexion-Sheet_6
+    21300014: wallConexion-Sheet_7
+    21300016: wallConexion-Sheet_8
+    21300018: wallConexion-Sheet_9
+    21300020: wallConexion-Sheet_10
+    21300022: wallConexion-Sheet_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: wallConexion-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    - name: wallConexion-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 40}
+        - {x: -26, y: 24}
+        - {x: -26, y: -27}
+        - {x: -13, y: -40}
+        - {x: 30, y: -40}
+        - {x: 40, y: -33}
+        - {x: 40, y: 40}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
