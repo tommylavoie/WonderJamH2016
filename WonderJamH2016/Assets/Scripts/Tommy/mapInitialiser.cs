@@ -6,6 +6,7 @@ public class mapInitialiser : MonoBehaviour {
     public Grid grid;
     public GameObject spawner;
     public GameObject mine;
+    public GameObject eclair;
 
 	// Use this for initialization
 	void Start () {
@@ -42,5 +43,8 @@ public class mapInitialiser : MonoBehaviour {
     public void addRessourceOnMap(int row, int col)
     {
         //INSTANCIER RESSOURCE
+        GameObject myRessource = Instantiate(eclair, new Vector2(-7 + (col * 0.4f), 3 - (row * 0.4f)), Quaternion.identity) as GameObject;
+        myRessource.GetComponent<EclairScript>().indexCol = col;
+        myRessource.GetComponent<EclairScript>().indexLigne = row;
     }
 }

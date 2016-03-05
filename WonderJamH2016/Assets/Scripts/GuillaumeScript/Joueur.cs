@@ -17,6 +17,7 @@ public class Joueur : MonoBehaviour {
     public int coutCell;
     public int coutCancer;
     public int coutBomb;
+    public int valeurEclair;
 
     public Grid grid;
     public CellGrid cellGrid;
@@ -26,6 +27,8 @@ public class Joueur : MonoBehaviour {
     public int indexCol;
 
     RaycastHit2D hit;
+
+    public GameObject textUp;
 
 	// Use this for initialization
 	void Start () {
@@ -52,12 +55,18 @@ public class Joueur : MonoBehaviour {
     {
         resource = resource = nbrDeResourceGagner;
         updaterResourceUI();
+        GameObject myTextUP =  Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
+        myTextUP.GetComponent<scriptTextUp>().setText("" + valeurEclair);
+
     }
 
     public void depenserResource(int nbrDeResourceDepenser)
     {
         resource = resource - nbrDeResourceDepenser;
         updaterResourceUI();
+
+        GameObject myTextUP = Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
+        myTextUP.GetComponent<scriptTextUp>().setText("-" + valeurEclair);
     }
 
     public bool PeutIlAcheter(int nbrDeResouceNecessaire)
@@ -148,7 +157,18 @@ public class Joueur : MonoBehaviour {
 
         if(o != null && o.tag == "Cell" || o.tag == "Cancer")
         {
-            o.GetComponent<CancerScript>().Hurt();
+            if(o.GetComponent<CancerScript>().VieActuelle == 1)
+            {
+                o.GetComponent<CancerScript>().Hurt();
+                addResource(o.GetComponent<CancerScript>().ressourceValue);
+            }
+            else
+            {
+                o.GetComponent<CancerScript>().Hurt();
+            }
+            
+
+
         }
     }
 

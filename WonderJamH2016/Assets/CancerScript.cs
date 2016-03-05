@@ -9,6 +9,7 @@ public class CancerScript : MonoBehaviour {
 
     public int VieMax;
     public int VieActuelle;
+    public int ressourceValue;
     private bool BarDeVieEstVisible = false;
 
     public GameObject bareDeVie;
