@@ -15,6 +15,7 @@ public class LumiereManager : MonoBehaviour
     public Joueur joueur2;
 
     public GameObject laLumiere;
+    public scriptExplosion explosion;
 
     int[,] lightGrid;
 
@@ -102,7 +103,9 @@ public class LumiereManager : MonoBehaviour
                     {
                         Lumiere l = o.GetComponent<Lumiere>();
                         l.positionCourante = l.startPosition;
-
+                        l.updaterMaPositionDansLeMondeDuJeu(l.positionCourante);
+                        Vector2 place = new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f));
+                        Instantiate(explosion, place, Quaternion.identity);
                     }
                 }
             }
