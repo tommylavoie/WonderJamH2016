@@ -86,7 +86,7 @@ public class Joueur : MonoBehaviour {
         resource = resource - nbrDeResourceDepenser;
         updaterResourceUI();
         GameObject myTextUP = Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        myTextUP.GetComponentInChildren<scriptTextUp>().setText("-" + nbrDeResourceDepenser);
+        myTextUP.GetComponentInChildren<scriptTextUp>().setTextRouge("-" + nbrDeResourceDepenser);
     }
 
     public bool PeutIlAcheter(int nbrDeResouceNecessaire)
