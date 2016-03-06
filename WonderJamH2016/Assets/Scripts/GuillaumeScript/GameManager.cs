@@ -172,9 +172,6 @@ public class GameManager : MonoBehaviour {
     {
         backUpDelaisEntreChaqueTic /= 2f;
         pathfinder.GetComponent<RessourceGenerator>().Interval_Seconds /= 2f;
-        InfoText info = GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>();
-        info.ClearNews();
-        info.AddNews("Plus vite, il ne reste que 30 secondes!");
         audioSource.pitch = 1.25f;
         leManagerDeLumiere.GetComponent<LumiereManager>().SpeedUp();
         Instantiate(speedUpLogo, new Vector2(0,0), Quaternion.identity);
