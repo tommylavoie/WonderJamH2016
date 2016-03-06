@@ -36,6 +36,11 @@ public class InfoText : MonoBehaviour
 		infoQueue.Enqueue(t);
 	}
 
+    public void ClearNews()
+    {
+        infoQueue = new Queue<string>();
+    }
+
     void StartShow()
     {
         actual = infoQueue.Dequeue();

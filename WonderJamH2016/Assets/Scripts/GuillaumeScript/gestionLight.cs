@@ -67,4 +67,9 @@ public class gestionLight : MonoBehaviour {
         maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", true);
 
     }
+
+    public void animationSpeedUp()
+    {
+        maLumiere.GetComponent<Animator>().SetBool("TempsRapide", true);
+    }
 }

@@ -114,6 +114,11 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
         transform.position = new Vector2(-7 + (laPositionCourante.y * 0.4f) , 3 -(laPositionCourante.x * 0.4f));
     }
 
+    public void speedUp()
+    {
+        gestionDeLaLumiere.animationSpeedUp();
+    }
+
     void StartShortestPathFinding(Position start)
     {
         if (yATilQuelqueChoseAutourDeMoiMonsieur())
