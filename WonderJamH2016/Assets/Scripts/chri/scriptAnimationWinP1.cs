@@ -3,6 +3,9 @@ using System.Collections;
 
 public class scriptAnimationWinP1 : MonoBehaviour {
 
+    public AudioClip eye;
+    public AudioClip gloup;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +19,16 @@ public class scriptAnimationWinP1 : MonoBehaviour {
     void ChangerScene()
     {
         Application.LoadLevel("canada1");
+    }
+
+    public void moveEye()
+    {
+        GetComponent<AudioSource>().PlayOneShot(eye, 0.8f);
+    }
+
+    public void gloupSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(gloup, 0.8f);
     }
 
 }

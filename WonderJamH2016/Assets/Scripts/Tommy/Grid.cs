@@ -27,17 +27,19 @@ public class Grid : MonoBehaviour
                 grid[i,j] = 0;
             }
         }
-        goals = new GoalInfo[10];
-        goals[0] = new GoalInfo(new Position(-1, 8), 0);
-        goals[1] = new GoalInfo(new Position(-1, 17), 0);
-        goals[2] = new GoalInfo(new Position(-1, 27), 1);
-        goals[3] = new GoalInfo(new Position(4, -1), 1);
-        goals[4] = new GoalInfo(new Position(4, NUMBER_OF_COLS), 0);
-        goals[5] = new GoalInfo(new Position(11, -1), 1);
-        goals[6] = new GoalInfo(new Position(11, NUMBER_OF_COLS), 0);
-        goals[7] = new GoalInfo(new Position(NUMBER_OF_ROWS, 8), 0);
-        goals[8] = new GoalInfo(new Position(NUMBER_OF_ROWS, 18), 1);
-        goals[9] = new GoalInfo(new Position(NUMBER_OF_ROWS, 27), 1);
+        goals = new GoalInfo[12];
+        goals[0] = new GoalInfo(new Position(-1, 5), 1);
+        goals[1] = new GoalInfo(new Position(-1, 30), 0);
+        goals[2] = new GoalInfo(new Position(5, -1), 0);
+        goals[3] = new GoalInfo(new Position(10, -1), 1);
+        goals[4] = new GoalInfo(new Position(NUMBER_OF_ROWS, 5), 0);
+        goals[5] = new GoalInfo(new Position(NUMBER_OF_ROWS, 30), 1);
+        goals[6] = new GoalInfo(new Position(10, NUMBER_OF_COLS), 0);
+        goals[7] = new GoalInfo(new Position(5, NUMBER_OF_COLS), 1);
+        goals[8] = new GoalInfo(new Position(-1, 15), 0);
+        goals[9] = new GoalInfo(new Position(-1, 20), 1);
+        goals[10] = new GoalInfo(new Position(NUMBER_OF_ROWS, 15), 1);
+        goals[11] = new GoalInfo(new Position(NUMBER_OF_ROWS, 20), 0);
     }
 	
 	// Update is called once per frame
