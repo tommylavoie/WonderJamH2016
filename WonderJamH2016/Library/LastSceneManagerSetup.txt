@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 sceneSetups: []
+=======
+sceneSetups:
+- path: Assets/Scenes/Tommy.unity
+  isLoaded: 1
+  isActive: 1
+>>>>>>> ad1f1e9deac780e7f9066e16c9c8871190eb2cfd

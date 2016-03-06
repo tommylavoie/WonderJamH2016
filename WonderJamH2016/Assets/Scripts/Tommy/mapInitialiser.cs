@@ -46,6 +46,6 @@ public class mapInitialiser : MonoBehaviour {
         GameObject myRessource = Instantiate(eclair, new Vector2(-7 + (col * 0.4f), 3 - (row * 0.4f)), Quaternion.identity) as GameObject;
         myRessource.GetComponent<EclairScript>().indexCol = col;
         myRessource.GetComponent<EclairScript>().indexLigne = row;
-        myRessource.GetComponent<EclairScript>().grid = grid;
+        myRessource.GetComponent<EclairScript>().grid = grid;        
     }
 }

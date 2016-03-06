@@ -62,10 +62,10 @@ public class Pathfinder : MonoBehaviour, DijkstraListener
         {
             if (cellGrid.GetElement(new Position(node.x, node.y)) != null)
             {
-                RuntimeAnimatorController sprite = firstPlayerSprite;
-                if (player == 1)
-                    sprite = secondPlayerSprite;
-                ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), player+1);
+                if(player == 1)
+                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 1);
+                else
+                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 2);
             }
         }
     }
