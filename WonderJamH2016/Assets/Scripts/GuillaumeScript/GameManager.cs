@@ -32,12 +32,15 @@ public class GameManager : MonoBehaviour {
     public float tempsDuFinish;
     //*******************************************************//
 
+    public AudioSource audioSource;
     public Pathfinder pathfinder;
     public bool ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
 
     bool leTexteDeLaNouvelleDesSoixanteSecondesAMaintenantEteAfficheAuTVANouvelles = false;
     bool leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles = false;
     bool leTexteDeLaNouvelleDesQuatreVingtDixSecondesAMaintenantEteAfficheAuTVANouvelles = false;
+
+    bool lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie = false;
 
     void Awake()
     {
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour {
         joueur2.GetComponent<Joueur>().setResource(resourceDeDepart);
 
         backUpDelaisEntreChaqueTic = delaisEntreChaqueTic;
+
+        faireLeStart();
 
         commencerTimer();
 	}
@@ -106,7 +111,7 @@ public class GameManager : MonoBehaviour {
                     afficherScore = true;
                     leTexteDeLaNouvelleDesSoixanteSecondesAMaintenantEteAfficheAuTVANouvelles = true;
                 }
-                if (!leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles && leTemps < 30)
+                if (!leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles && leTemps < 28)
                 {
                     afficherScore = true;
                     leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles = true;
@@ -118,6 +123,11 @@ public class GameManager : MonoBehaviour {
                         joueur = joueur1;
                     GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
                             .AddNews("Joueur " + joueur.GetComponent<Joueur>().NoJoueur + " mène avec " + joueur.GetComponent<Joueur>().score + " points!");
+                }
+
+                if(!lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie && leTemps < 30)
+                {
+                    SpeedUp();
                 }
             }
             else
@@ -153,6 +163,17 @@ public class GameManager : MonoBehaviour {
         }
 
 	}
+
+    void SpeedUp()
+    {
+        backUpDelaisEntreChaqueTic = 0.25f;
+        InfoText info = GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>();
+        info.ClearNews();
+        info.AddNews("Plus vite, il ne reste que 30 secondes!");
+        audioSource.pitch = 1.25f;
+        leManagerDeLumiere.GetComponent<LumiereManager>().SpeedUp();
+        lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie = true;
+    }
 
     public void faireLeStart()
     {
