@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
 
         backUpDelaisEntreChaqueTic = delaisEntreChaqueTic;
 
+        faireLeStart();
+
         commencerTimer();
 	}
 

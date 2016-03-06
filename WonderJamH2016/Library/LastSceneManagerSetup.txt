@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Rondoudou.unity
+- path: Assets/Scenes/Guillaume.unity
   isLoaded: 1
   isActive: 1
