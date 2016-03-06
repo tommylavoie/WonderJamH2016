@@ -29,6 +29,7 @@ public class CancerScript : MonoBehaviour {
         {
             if(BarDeVieEstVisible == false)
             {
+
                 MabareDeVie = Instantiate(bareDeVie, new Vector2(transform.position.x - 0.3f, transform.position.y + 0.4f), Quaternion.identity) as GameObject;
                 MabareDeVie.transform.parent = gameObject.transform;
                 MabareDeVie.GetComponent<barreDeVieScript>().maxVie = VieMax;

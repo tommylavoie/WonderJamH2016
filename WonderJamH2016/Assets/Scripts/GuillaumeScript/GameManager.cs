@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour {
     public Pathfinder pathfinder;
     public bool ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
 
+    bool leTexteDeLaNouvelleDesSoixanteSecondesAMaintenantEteAfficheAuTVANouvelles = false;
+    bool leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles = false;
+    bool leTexteDeLaNouvelleDesQuatreVingtDixSecondesAMaintenantEteAfficheAuTVANouvelles = false;
+
     void Awake()
     {
         if (instance == null)
@@ -60,6 +64,8 @@ public class GameManager : MonoBehaviour {
     {
         if (ilYAEuUneExplosionCeTourCiSauveQuiPeut)
         {
+            GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                .AddNews("Des explosions ont eu lieu dans le cortex cérébral!");
             pathfinder.UpdateShortestPaths();
             ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
         }
@@ -87,6 +93,31 @@ public class GameManager : MonoBehaviour {
                 {
                     leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
                     delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
+                }
+
+                bool afficherScore = false;
+                if (!leTexteDeLaNouvelleDesQuatreVingtDixSecondesAMaintenantEteAfficheAuTVANouvelles && leTemps < 90)
+                {
+                    afficherScore = true;
+                    leTexteDeLaNouvelleDesQuatreVingtDixSecondesAMaintenantEteAfficheAuTVANouvelles = true;
+                }
+                if (!leTexteDeLaNouvelleDesSoixanteSecondesAMaintenantEteAfficheAuTVANouvelles && leTemps < 60)
+                {
+                    afficherScore = true;
+                    leTexteDeLaNouvelleDesSoixanteSecondesAMaintenantEteAfficheAuTVANouvelles = true;
+                }
+                if (!leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles && leTemps < 30)
+                {
+                    afficherScore = true;
+                    leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles = true;
+                }
+                if(afficherScore)
+                {
+                    GameObject joueur = joueur2;
+                    if (joueur1.GetComponent<Joueur>().score > joueur2.GetComponent<Joueur>().score)
+                        joueur = joueur1;
+                    GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                            .AddNews("Joueur " + joueur.GetComponent<Joueur>().NoJoueur + " mène avec " + joueur.GetComponent<Joueur>().score + " points!");
                 }
             }
             else
