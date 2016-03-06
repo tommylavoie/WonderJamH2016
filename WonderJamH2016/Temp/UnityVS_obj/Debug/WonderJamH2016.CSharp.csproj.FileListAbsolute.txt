@@ -1,0 +1,13 @@
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_obj\Debug\WonderJamH2016.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
+C:\Users\Tommy\Desktop\UQAC\Session5\WonderJamH2016\WonderJamH2016\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb
