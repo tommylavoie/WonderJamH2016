@@ -30,8 +30,14 @@ public class GameManager : MonoBehaviour {
     public float backUpDelaisEntreChaqueTic;
     //*******************************************************//
 
+    //Pour le debut d'une partie ****************************//
+    public GameObject troisDeuxUnGo;
+    //*******************************************************//
+
     //Pour la fin *******************************************//
     public float tempsDuFinish;
+    bool laPartieEstFinit = false;
+    bool jaiDejaFaisLeTroisDeuxUnGo = false;
     //*******************************************************//
 
     public AudioSource audioSource;
@@ -62,9 +68,11 @@ public class GameManager : MonoBehaviour {
 
         backUpDelaisEntreChaqueTic = delaisEntreChaqueTic;
 
-        faireLeStart();
+        minutes = Mathf.Floor(leTemps / 60).ToString("0");
+        seconds = Mathf.Floor(leTemps % 60).ToString("00");
 
-        commencerTimer();
+        leTimer.GetComponent<Text>().text = minutes + " : " + seconds;
+
 	}
 
     void Update()
@@ -80,8 +88,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-	
-        if(laPartieEstCommencer == true)
+
+        if (laPartieEstCommencer == true)
         {
             leTemps = leTemps - Time.deltaTime;
 
@@ -120,7 +128,7 @@ public class GameManager : MonoBehaviour {
                     afficherScore = true;
                     leTexteDeLaNouvelleDesTrenteSecondesAMaintenantEteAfficheAuTVANouvelles = true;
                 }
-                if(afficherScore)
+                if (afficherScore)
                 {
                     GameObject joueur = joueur2;
                     if (joueur1.GetComponent<Joueur>().score > joueur2.GetComponent<Joueur>().score)
@@ -129,16 +137,19 @@ public class GameManager : MonoBehaviour {
                             .AddNews("Joueur " + joueur.GetComponent<Joueur>().NoJoueur + " mène avec " + joueur.GetComponent<Joueur>().score + " points!");
                 }
 
-                if(!lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie && leTemps < 30)
+                if (!lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie && leTemps < 30)
                 {
                     SpeedUp();
                 }
             }
-            else
+        }
+        else
+        {
+            if (laPartieEstFinit == true)
             {
                 //On doit arrete le jeu (enlever les controls des joueurs
                 leTimer.GetComponent<Text>().text = "0 : 00";
-                
+
                 //Je fais spawner le "finished"
 
                 //On attend 2 ou 3 seconde
@@ -158,14 +169,22 @@ public class GameManager : MonoBehaviour {
                 }
                 else
                 {
-                   tempsDuFinish = tempsDuFinish - Time.deltaTime;
+                    tempsDuFinish = tempsDuFinish - Time.deltaTime;
                 }
-
             }
 
-
+            else
+            {
+                if (jaiDejaFaisLeTroisDeuxUnGo == false)
+                {
+                    //On vient juste d'arriver dans la scene
+                    //On instancie le 321
+                    Instantiate(troisDeuxUnGo, Vector3.zero, Quaternion.identity);
+                    Debug.Log("Je fonctionne");
+                    jaiDejaFaisLeTroisDeuxUnGo = true;
+                }
+            }
         }
-
 	}
 
     void SpeedUp()
@@ -178,14 +197,11 @@ public class GameManager : MonoBehaviour {
         lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie = true;
     }
 
-    public void faireLeStart()
-    {
-
-    }
 
     public void commencerTimer()
     {
         laPartieEstCommencer = true;
     }
+
 
 }
