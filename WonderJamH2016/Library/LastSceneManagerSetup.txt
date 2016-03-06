@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Salameche.unity
+=======
+- path: Assets/Scenes/Cri.unity
+>>>>>>> 01b21657fdb120e0e5c108433aa13176c3765b2d
   isLoaded: 1
   isActive: 1
