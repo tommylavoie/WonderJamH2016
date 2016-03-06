@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/StartScreen.unity
-=======
-- path: Assets/Scenes/Tommy.unity
->>>>>>> 86732175b6d5f89524929d848167328804066386
+- path: Assets/Scenes/Rondoudou.unity
   isLoaded: 1
   isActive: 1
