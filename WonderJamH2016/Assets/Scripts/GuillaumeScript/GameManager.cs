@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
     public float tempsDuFinish;
     bool laPartieEstFinit = false;
     bool jaiDejaFaisLeTroisDeuxUnGo = false;
+    public GameObject timeOver;
     //*******************************************************//
 
     public AudioSource audioSource;
@@ -142,6 +143,13 @@ public class GameManager : MonoBehaviour {
                     SpeedUp();
                 }
             }
+
+            else
+            {
+                laPartieEstFinit = true;
+                laPartieEstCommencer = false;
+               
+            }
         }
         else
         {
@@ -152,25 +160,11 @@ public class GameManager : MonoBehaviour {
 
                 //Je fais spawner le "finished"
 
-                //On attend 2 ou 3 seconde
+                Instantiate(timeOver, Vector3.zero, Quaternion.identity);
+                laPartieEstFinit = false;
 
-                if (tempsDuFinish <= 0)
-                {
-                    if (joueur1.GetComponent<Joueur>().score > joueur2.GetComponent<Joueur>().score)
-                    {
-                        //On call la scene win de player 1
-                        UnityEngine.Application.LoadLevel("WinPlayer1");
-                    }
-                    else
-                    {
-                        //On call la scene win de player 2
-                        UnityEngine.Application.LoadLevel("WinPlayer2");
-                    }
-                }
-                else
-                {
-                    tempsDuFinish = tempsDuFinish - Time.deltaTime;
-                }
+               
+
             }
 
             else
@@ -203,5 +197,19 @@ public class GameManager : MonoBehaviour {
         laPartieEstCommencer = true;
     }
 
+    public void finirLaPartie()
+    {
+
+        if (joueur1.GetComponent<Joueur>().score > joueur2.GetComponent<Joueur>().score)
+        {
+            //On call la scene win de player 1
+            UnityEngine.Application.LoadLevel("WinPlayer1");
+        }
+        else
+        {
+            //On call la scene win de player 2
+            UnityEngine.Application.LoadLevel("WinPlayer2");
+        }
+    }
 
 }
