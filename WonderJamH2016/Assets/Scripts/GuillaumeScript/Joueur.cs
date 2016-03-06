@@ -106,7 +106,10 @@ public class Joueur : MonoBehaviour {
     public void addScore(int leScore, GoalInfo goal)
     {
         score = score + leScore;
+
+//transform.position = new Vector2(-7 + (laPositionCourante.y * 0.4f), 3 - (laPositionCourante.x * 0.4f));
         updaterScoreUI();
+
     }
 
     public void placerCell()
