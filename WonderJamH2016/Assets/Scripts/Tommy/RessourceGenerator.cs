@@ -21,11 +21,14 @@ public class RessourceGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        updateTimer();
-        if(exceeded)
+        if (GameManager.instance.laPartieEstCommencer)
         {
-            generate();
-            exceeded = false;
+            updateTimer();
+            if (exceeded)
+            {
+                generate();
+                exceeded = false;
+            }
         }
 	}
 
