@@ -146,6 +146,7 @@ public class Joueur : MonoBehaviour {
                 grid.SetElement(Grid.DEAD_CELL, new Position(indexLigne, indexCol));
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 depenserResource(coutCancer);
+                GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
             }
 
         }
