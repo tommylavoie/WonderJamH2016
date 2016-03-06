@@ -6,6 +6,7 @@ public class CancerScript : MonoBehaviour {
     public int indexLigne;
     public int indexCol;
     public Grid grid;
+    public GameObject mortGameObject;
 
     public int VieMax;
     public int VieActuelle;
@@ -48,6 +49,7 @@ public class CancerScript : MonoBehaviour {
     {
         grid.GetComponent<CellGrid>().RemoveElement(new Position(indexLigne, indexCol));
         grid.SetElement(Grid.EMPTY, new Position(indexLigne, indexCol));
+        Instantiate(mortGameObject, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
