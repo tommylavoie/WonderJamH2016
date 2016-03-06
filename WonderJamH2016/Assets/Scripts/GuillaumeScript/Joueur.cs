@@ -9,6 +9,8 @@ public class Joueur : MonoBehaviour {
     public GameObject cell;
     public GameObject bomb;
     public GameObject cancer;
+    public GameObject xRouge;
+    public GameObject hammer;
 
     public int resource;
     public int score;
@@ -73,12 +75,18 @@ public class Joueur : MonoBehaviour {
 
     }
 
+    public void addAutoRessource(int nb)
+    {
+        resource = resource + nb;
+        updaterResourceUI();
+    }
+
     public void depenserResource(int nbrDeResourceDepenser)
     {
         resource = resource - nbrDeResourceDepenser;
         updaterResourceUI();
         GameObject myTextUP = Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        myTextUP.GetComponentInChildren<scriptTextUp>().setText("-" + nbrDeResourceDepenser);
+        myTextUP.GetComponentInChildren<scriptTextUp>().setTextRouge("-" + nbrDeResourceDepenser);
     }
 
     public bool PeutIlAcheter(int nbrDeResouceNecessaire)
@@ -109,7 +117,7 @@ public class Joueur : MonoBehaviour {
         score = score + leScore;
         GameObject myTextUP = Instantiate(textUp, new Vector2(-7 + (goal.position.y * 0.4f), 3 - (goal.position.x * 0.4f)), Quaternion.identity) as GameObject;
         myTextUP.GetComponentInChildren<scriptTextUp>().setText("" + leScore);
-        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound);
+        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound*3);
         updaterScoreUI();
 
     }
@@ -136,13 +144,15 @@ public class Joueur : MonoBehaviour {
             }
             else
             {
-                GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+                GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+                Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
             }
             
         }
         else
         {
-            GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
         }
         
     }
@@ -164,7 +174,17 @@ public class Joueur : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
                         .AddNews("Une tumeur vient de naître!");
             }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+                Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
+            }
 
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
         }
 
     }
@@ -178,6 +198,11 @@ public class Joueur : MonoBehaviour {
             GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
                         .AddNews("Alerte à la bombe!");
         }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
+        }
     }
 
     public void faireHammer()
@@ -189,10 +214,12 @@ public class Joueur : MonoBehaviour {
             if(o.tag == "Cell")
             {
                 GetComponent<AudioSource>().PlayOneShot(frapperCellSound, volumesound);
+                Instantiate(hammer, transform.parent.transform.position, Quaternion.identity);
             }
             else if(o.tag == "Cancer")
             {
                 GetComponent<AudioSource>().PlayOneShot(frapperCancerSound, volumesound);
+                Instantiate(hammer, transform.parent.transform.position, Quaternion.identity);
             }
 
             if(o.GetComponent<CancerScript>().VieActuelle == 1)
@@ -204,9 +231,11 @@ public class Joueur : MonoBehaviour {
             {
                 o.GetComponent<CancerScript>().Hurt();
             }
-            
-
-
+        }
+        else
+        {
+            /*GetComponent<AudioSource>().PlayOneShot(errorSound, 0.3f);
+            GameObject myCross = Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity) as GameObject;*/
         }
     }
 

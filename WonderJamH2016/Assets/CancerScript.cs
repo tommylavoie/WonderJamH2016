@@ -62,7 +62,7 @@ public class CancerScript : MonoBehaviour {
 
     IEnumerator WaitForHurt()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         Destroy(MabareDeVie);
         VieActuelle = VieMax;
         BarDeVieEstVisible = false;

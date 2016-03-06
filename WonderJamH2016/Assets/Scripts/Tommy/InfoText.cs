@@ -46,13 +46,14 @@ public class InfoText : MonoBehaviour
         actual = infoQueue.Dequeue();
         showing = true;
         text.text = actual;
-        transform.position = new Vector2(Screen.width + actual.Length , transform.position.y);
+        transform.position = new Vector2(Screen.width + text.preferredWidth/2 , transform.position.y);
     }
 
     void ExecuteShow()
     {
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(-actual.Length*10, transform.position.y), Speed * Time.deltaTime);
-        if (transform.position.x <= 0.1f)
+        float end = -text.preferredWidth / 2;
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(end, transform.position.y), Speed * Time.deltaTime);
+        if (transform.position.x <= end + 0.1f)
             EndShow();
     }
 
