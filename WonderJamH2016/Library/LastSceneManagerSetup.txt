@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Cri.unity
-=======
-- path: Assets/Scenes/Guillaume.unity
->>>>>>> 4782cbb3de2daab2595f9d9632a857c096a76484
+- path: Assets/Scenes/Rondoudou.unity
   isLoaded: 1
   isActive: 1

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 
     //Pour le timer *****************************************//
     public GameObject leTimer;
+    public GameObject speedUpLogo;
+    public GameObject leSpeedUp;
     public int tempsArretDebut;
     public float leTemps;
     public bool laPartieEstCommencer = false;
@@ -98,6 +100,8 @@ public class GameManager : MonoBehaviour {
                 {
                     leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
                     delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
+                    joueur1.GetComponent<Joueur>().addAutoRessource(1);
+                    joueur2.GetComponent<Joueur>().addAutoRessource(1);
                 }
 
                 bool afficherScore = false;
@@ -166,12 +170,14 @@ public class GameManager : MonoBehaviour {
 
     void SpeedUp()
     {
-        backUpDelaisEntreChaqueTic = 0.25f;
+        backUpDelaisEntreChaqueTic /= 2f;
+        pathfinder.GetComponent<RessourceGenerator>().Interval_Seconds /= 2f;
         InfoText info = GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>();
         info.ClearNews();
         info.AddNews("Plus vite, il ne reste que 30 secondes!");
         audioSource.pitch = 1.25f;
         leManagerDeLumiere.GetComponent<LumiereManager>().SpeedUp();
+        Instantiate(speedUpLogo, new Vector2(0,0), Quaternion.identity);
         lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie = true;
     }
 

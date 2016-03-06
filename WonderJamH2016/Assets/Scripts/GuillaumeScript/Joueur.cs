@@ -73,6 +73,12 @@ public class Joueur : MonoBehaviour {
 
     }
 
+    public void addAutoRessource(int nb)
+    {
+        resource = resource + nb;
+        updaterResourceUI();
+    }
+
     public void depenserResource(int nbrDeResourceDepenser)
     {
         resource = resource - nbrDeResourceDepenser;
@@ -109,7 +115,7 @@ public class Joueur : MonoBehaviour {
         score = score + leScore;
         GameObject myTextUP = Instantiate(textUp, new Vector2(-7 + (goal.position.y * 0.4f), 3 - (goal.position.x * 0.4f)), Quaternion.identity) as GameObject;
         myTextUP.GetComponentInChildren<scriptTextUp>().setText("" + leScore);
-        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound);
+        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound*3);
         updaterScoreUI();
 
     }
