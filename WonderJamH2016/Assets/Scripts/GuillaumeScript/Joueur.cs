@@ -9,6 +9,8 @@ public class Joueur : MonoBehaviour {
     public GameObject cell;
     public GameObject bomb;
     public GameObject cancer;
+    public GameObject xRouge;
+    public GameObject hammer;
 
     public int resource;
     public int score;
@@ -136,13 +138,15 @@ public class Joueur : MonoBehaviour {
             }
             else
             {
-                GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+                GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+                Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
             }
             
         }
         else
         {
-            GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
         }
         
     }
@@ -164,7 +168,17 @@ public class Joueur : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
                         .AddNews("Une tumeur vient de naître!");
             }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+                Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
+            }
 
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
         }
 
     }
@@ -178,6 +192,11 @@ public class Joueur : MonoBehaviour {
             GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
                         .AddNews("Alerte à la bombe!");
         }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, 0.1f);
+            Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity);
+        }
     }
 
     public void faireHammer()
@@ -189,10 +208,12 @@ public class Joueur : MonoBehaviour {
             if(o.tag == "Cell")
             {
                 GetComponent<AudioSource>().PlayOneShot(frapperCellSound, volumesound);
+                Instantiate(hammer, transform.parent.transform.position, Quaternion.identity);
             }
             else if(o.tag == "Cancer")
             {
                 GetComponent<AudioSource>().PlayOneShot(frapperCancerSound, volumesound);
+                Instantiate(hammer, transform.parent.transform.position, Quaternion.identity);
             }
 
             if(o.GetComponent<CancerScript>().VieActuelle == 1)
@@ -204,9 +225,11 @@ public class Joueur : MonoBehaviour {
             {
                 o.GetComponent<CancerScript>().Hurt();
             }
-            
-
-
+        }
+        else
+        {
+            /*GetComponent<AudioSource>().PlayOneShot(errorSound, 0.3f);
+            GameObject myCross = Instantiate(xRouge, transform.parent.transform.position, Quaternion.identity) as GameObject;*/
         }
     }
 
