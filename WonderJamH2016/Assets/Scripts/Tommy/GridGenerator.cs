@@ -9,8 +9,12 @@ public class GridGenerator : MonoBehaviour
     Grid grid;
     public int Spawners = 0;
     public int Mines = 0;
+    public int Cancer_Groups = 0;
     public int Minimum_Distance_From_Walls = 0;
     public int Minimum_Distance_From_Others = 0;
+
+    public int Minimum_Per_Group = 2;
+    public int Maximum_Per_Group = 4;
 
 	// Use this for initialization
 	void Start ()
@@ -73,6 +77,35 @@ public class GridGenerator : MonoBehaviour
         grid.setSpawners(spawners);
     }
 
+    void GenerateCancer()
+    {
+        int total = Cancer_Groups;
+        while(total > 0)
+        {
+            int groupRow = RNG(0, Grid.NUMBER_OF_ROWS);
+            int groupCol = RNG(0, Grid.NUMBER_OF_COLS);
+            Position groupPosition = new Position(groupRow, groupCol);
+            if(grid.GetElement(groupRow,groupCol) == Grid.EMPTY)
+            {
+                int tries = 0;
+                int numberOfCancers = RNG(Minimum_Per_Group, Maximum_Per_Group+1);
+                while(numberOfCancers > 0 && tries < 5)
+                {
+                    int row = RNG(0, 3) - 1;
+                    int col = RNG(0, 3) - 1;
+                    if (grid.IsPositionValid(groupRow + row, groupCol + col) && grid.GetElement(groupRow + row, groupCol + col) == Grid.EMPTY)
+                    {
+                        grid.SetElement(Grid.DEAD_CELL, new Position(groupRow + row, groupCol + col));
+                        numberOfCancers--;
+                    }
+                    else
+                        tries++;
+                }
+                total--;
+            }
+        }
+    }
+
     void Generate()
     {
         //Parametres de base
@@ -118,7 +151,11 @@ public class GridGenerator : MonoBehaviour
         //Reproduis la partie de la grille vers le cote droit
         DoSymmetry();
 
+        GenerateCancer();
+
         //Liste de spawners
         setSpawners();
+
+        grid.print();
     }
 }
