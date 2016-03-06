@@ -79,9 +79,9 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
                 GoalInfo goal = maGrid.GetAssociatedGoal(positionCourante);
                 int player = goal.GetPlayerNumber();
                 if (player == 0)
-                    joueur1.addScore(1);
+                    joueur1.addScore(1, goal);
                 else
-                    joueur2.addScore(1);
+                    joueur2.addScore(1, goal);
                 positionCourante = startPosition;
                 updaterMaPositionDansLeMondeDuJeu(positionCourante);
                 StartShortestPathFinding(positionCourante);

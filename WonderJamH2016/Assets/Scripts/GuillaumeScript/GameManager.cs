@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour {
     public float backUpDelaisEntreChaqueTic;
     //*******************************************************//
 
+    //Pour la fin *******************************************//
+    public float tempsDuFinish;
+    //*******************************************************//
+
     public Pathfinder pathfinder;
     public bool ilYAEuUneExplosionCeTourCiSauveQuiPeut = false;
 
@@ -68,20 +72,53 @@ public class GameManager : MonoBehaviour {
         {
             leTemps = leTemps - Time.deltaTime;
 
-            minutes = Mathf.Floor(leTemps / 60).ToString("0");
-            seconds = Mathf.Floor(leTemps % 60).ToString("00");
-
-            leTimer.GetComponent<Text>().text = minutes + " : " + seconds;
-
-            //Debug.Log("Le temps : " + minutes + ":" + seconds);
-
-            delaisEntreChaqueTic = delaisEntreChaqueTic - Time.deltaTime;
-
-            if(delaisEntreChaqueTic <= 0)
+            if (leTemps > 0)
             {
-                leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
-                delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
+                minutes = Mathf.Floor(leTemps / 60).ToString("0");
+                seconds = Mathf.Floor(leTemps % 60).ToString("00");
+
+                leTimer.GetComponent<Text>().text = minutes + " : " + seconds;
+
+                //Debug.Log("Le temps : " + minutes + ":" + seconds);
+
+                delaisEntreChaqueTic = delaisEntreChaqueTic - Time.deltaTime;
+
+                if (delaisEntreChaqueTic <= 0)
+                {
+                    leManagerDeLumiere.GetComponent<LumiereManager>().unTic();
+                    delaisEntreChaqueTic = backUpDelaisEntreChaqueTic;
+                }
             }
+            else
+            {
+                //On doit arrete le jeu (enlever les controls des joueurs
+                leTimer.GetComponent<Text>().text = "0 : 00";
+                
+                //Je fais spawner le "finished"
+
+                //On attend 2 ou 3 seconde
+
+                if (tempsDuFinish <= 0)
+                {
+                    if (joueur1.GetComponent<Joueur>().score > joueur2.GetComponent<Joueur>().score)
+                    {
+                        //On call la scene win de player 1
+                        UnityEngine.Application.LoadLevel("WinPlayer1");
+                    }
+                    else
+                    {
+                        //On call la scene win de player 2
+                        UnityEngine.Application.LoadLevel("WinPlayer2");
+                    }
+                }
+                else
+                {
+                   tempsDuFinish = tempsDuFinish - Time.deltaTime;
+                }
+
+            }
+
+
         }
 
 	}

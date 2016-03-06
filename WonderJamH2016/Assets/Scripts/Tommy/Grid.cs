@@ -28,12 +28,12 @@ public class Grid : MonoBehaviour
             }
         }
         goals = new GoalInfo[6];
-        goals[0] = new GoalInfo(new Position(-1, 1), 0);
-        goals[1] = new GoalInfo(new Position(7, -1), 1);
-        goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 13), 1);
-        goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 22), 0);
-        goals[4] = new GoalInfo(new Position(-1, 35), 1);
-        goals[5] = new GoalInfo(new Position(8, NUMBER_OF_COLS), 0);
+        goals[0] = new GoalInfo(new Position(-1, 1), 1);
+        goals[1] = new GoalInfo(new Position(7, -1), 0);
+        goals[2] = new GoalInfo(new Position(NUMBER_OF_ROWS, 13), 0);
+        goals[3] = new GoalInfo(new Position(NUMBER_OF_ROWS, 22), 1);
+        goals[4] = new GoalInfo(new Position(-1, 34), 0);
+        goals[5] = new GoalInfo(new Position(8, NUMBER_OF_COLS), 1);
     }
 	
 	// Update is called once per frame
