@@ -24,5 +24,7 @@ public class CANADA : MonoBehaviour {
     IEnumerator Wait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        Application.LoadLevel("StartScreen");
     }
+
 }
