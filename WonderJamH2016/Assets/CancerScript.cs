@@ -21,6 +21,17 @@ public class CancerScript : MonoBehaviour {
     void Start () {
         VieActuelle = VieMax;
 	}
+
+    GameObject GetEnabledChild()
+    {
+        Connexion[] children = gameObject.GetComponentsInChildren<Connexion>();
+        foreach (Connexion c in children)
+        {
+            if (c.gameObject.GetComponent<SpriteRenderer>().enabled)
+                return c.gameObject;
+        }
+        return null;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,7 +40,7 @@ public class CancerScript : MonoBehaviour {
         {
             if(BarDeVieEstVisible == false)
             {
-                MabareDeVie = Instantiate(bareDeVie, new Vector2(transform.position.x - GetComponent<SpriteRenderer>().bounds.size.x/2, transform.position.y + GetComponent<SpriteRenderer>().bounds.size.y), Quaternion.identity) as GameObject;
+                MabareDeVie = Instantiate(bareDeVie, new Vector2(transform.position.x - GetEnabledChild().GetComponent<SpriteRenderer>().bounds.size.x/2, transform.position.y + GetEnabledChild().GetComponent<SpriteRenderer>().bounds.size.y), Quaternion.identity) as GameObject;
                 MabareDeVie.transform.parent = gameObject.transform;
                 MabareDeVie.GetComponent<barreDeVieScript>().maxVie = VieMax;
                 BarDeVieEstVisible = true;
