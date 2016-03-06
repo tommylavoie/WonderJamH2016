@@ -11,12 +11,15 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
     public Joueur joueur2;
     public Grid maGrid;
 
+    gestionLight gestionDeLaLumiere;
+
     List<Position> votreCheminASuivreSilVousPlait;
 
 	// Use this for initialization
 	void Start ()
     {
         votreCheminASuivreSilVousPlait = new List<Position>();
+        gestionDeLaLumiere = GetComponent<gestionLight>();
 	}
 	
 	// Update is called once per frame
@@ -66,9 +69,13 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
                         positionCourante = new Position(votreCheminASuivreSilVousPlait[1].x, votreCheminASuivreSilVousPlait[1].y);
                         updaterMaPositionDansLeMondeDuJeu(positionCourante);
                         votreCheminASuivreSilVousPlait.RemoveAt(0);
+                        gestionDeLaLumiere.animationBouger();
+
                     }
                     else if(yATilQuelqueChoseAutourDeMoiMonsieur())
                     {
+                        gestionDeLaLumiere.animationQuandBougePas();
+
                         StartShortestPathFinding(positionCourante);
                         //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
                     }
@@ -76,6 +83,7 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
             }
             else
             {
+                gestionDeLaLumiere.animationQuandBougePas();
                 GoalInfo goal = maGrid.GetAssociatedGoal(positionCourante);
                 int player = goal.GetPlayerNumber();
                 if (player == 0)
@@ -90,6 +98,8 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
         }
         else
         {
+            gestionDeLaLumiere.animationQuandBougePas();
+
             if (yATilQuelqueChoseAutourDeMoiMonsieur())
             {
                 StartShortestPathFinding(positionCourante);
