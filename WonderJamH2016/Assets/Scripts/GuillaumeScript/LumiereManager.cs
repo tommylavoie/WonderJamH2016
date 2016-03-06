@@ -77,7 +77,7 @@ public class LumiereManager : MonoBehaviour
             lightGrid[lumiere.positionCourante.x, lumiere.positionCourante.y]--;
             poolDesLumiereGameObject[i].GetComponent<Lumiere>().updateTaPosition();
             
-            poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
+            //poolDesLumiereGameObject[i].GetComponentInChildren<gestionLight>().updateMaLumiere = true;
             
 
 

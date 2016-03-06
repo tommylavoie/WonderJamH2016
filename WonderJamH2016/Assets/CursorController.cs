@@ -21,8 +21,10 @@ public class CursorController : MonoBehaviour {
     private SpriteRenderer mySpriteRender;
     private bool CanPress = true;
 
-	// Use this for initialization
-	void Start () {
+    bool surdoseOK = false;
+
+    // Use this for initialization
+    void Start () {
         mySpriteRender = sizeGameObject.GetComponent<SpriteRenderer>();
         Debug.Log(mySpriteRender.bounds.size);
 	}
@@ -200,14 +202,33 @@ public class CursorController : MonoBehaviour {
         CanPress = true;
     }
 
+    int RNG(int min, int max)
+    {
+        int rand = UnityEngine.Random.Range(min, max);
+        return rand;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Eclair")
         {
+            
             Joueur.GetComponent<Joueur>().addResource(Joueur.GetComponent<Joueur>().valeurEclair);
             Destroy(other.gameObject);
             other.GetComponent<EclairScript>().RammaserEclair();
-
+            if (RNG(1, 11) == 10)
+            {
+                int noJoueur = Joueur.GetComponent<Joueur>().NoJoueur;
+                GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                        .AddNews("Joueur " + noJoueur + " se sent soudainement électrifié!");
+            }
+            if (!surdoseOK && Joueur.GetComponent<Joueur>().valeurEclair > 300)
+            {
+                int noJoueur = Joueur.GetComponent<Joueur>().NoJoueur;
+                GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                            .AddNews("Joueur " + noJoueur + " est en overdose d'énergie!");
+                surdoseOK = true;
+            }
         }
     }
 

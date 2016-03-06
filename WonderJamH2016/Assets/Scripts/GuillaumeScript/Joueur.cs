@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Joueur : MonoBehaviour {
 
+    public int NoJoueur = 1;
     public GameObject cell;
     public GameObject bomb;
     public GameObject cancer;
@@ -35,6 +36,8 @@ public class Joueur : MonoBehaviour {
     public AudioClip placerBlockSound;
     public AudioClip frapperCellSound;
     public AudioClip frapperCancerSound;
+    public AudioClip errorSound;
+    public AudioClip entrerRessourceSound;
 
     public float volumesound;
 
@@ -104,6 +107,9 @@ public class Joueur : MonoBehaviour {
     public void addScore(int leScore, GoalInfo goal)
     {
         score = score + leScore;
+        GameObject myTextUP = Instantiate(textUp, new Vector2(-7 + (goal.position.y * 0.4f), 3 - (goal.position.x * 0.4f)), Quaternion.identity) as GameObject;
+        myTextUP.GetComponentInChildren<scriptTextUp>().setText("" + leScore);
+        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound);
         updaterScoreUI();
 
     }
@@ -128,7 +134,15 @@ public class Joueur : MonoBehaviour {
                 GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
                 //List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+            }
             
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
         }
         
     }
@@ -147,6 +161,8 @@ public class Joueur : MonoBehaviour {
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 depenserResource(coutCancer);
                 GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
+                GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                        .AddNews("Une tumeur vient de naître!");
             }
 
         }
@@ -159,6 +175,8 @@ public class Joueur : MonoBehaviour {
         {
             Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
+            GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                        .AddNews("Alerte à la bombe!");
         }
     }
 

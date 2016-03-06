@@ -64,6 +64,14 @@ public class Grid : MonoBehaviour
         return grid[row, col];
     }
 
+    public bool IsPositionValid(int row, int col)
+    {
+        if (row >= 0 && row < NUMBER_OF_ROWS && col >= 0 && col < NUMBER_OF_COLS)
+            return true;
+        else
+            return false;
+    }
+
     public GoalInfo[] getGoals()
     {
         return goals;

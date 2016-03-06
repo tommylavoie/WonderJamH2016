@@ -39,7 +39,6 @@ public class Pathfinder : MonoBehaviour, DijkstraListener
             c.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
         children[state].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-
     }
 
     void ResetPaths()
@@ -48,7 +47,7 @@ public class Pathfinder : MonoBehaviour, DijkstraListener
         {
             for (int j = 0; j < Grid.NUMBER_OF_COLS; j++)
             {
-                if(cellGrid.GetElement(new Position(i, j)) != null)
+                if(cellGrid.GetElement(new Position(i, j)) != null && cellGrid.GetElement(new Position(i, j)).tag == "Cell")
                 {
                     ChangeSprite(cellGrid.GetElement(new Position(i, j)), 0);
                 }
@@ -60,12 +59,12 @@ public class Pathfinder : MonoBehaviour, DijkstraListener
     {
         foreach(Position node in path)
         {
-            if (cellGrid.GetElement(new Position(node.x, node.y)) != null)
+            if (cellGrid.GetElement(new Position(node.x, node.y)) != null && cellGrid.GetElement(node).tag == "Cell")
             {
-                RuntimeAnimatorController sprite = firstPlayerSprite;
-                if (player == 1)
-                    sprite = secondPlayerSprite;
-                ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), player+1);
+                if(player == 1)
+                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 1);
+                else
+                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 2);
             }
         }
     }

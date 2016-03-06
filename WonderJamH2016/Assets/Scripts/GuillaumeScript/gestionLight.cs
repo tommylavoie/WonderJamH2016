@@ -53,7 +53,18 @@ public class gestionLight : MonoBehaviour {
     {
         if (updateMaLumiere == true)
         {
-            maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", false);
+            //maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", false);
         }
+    }
+
+    public void animationBouger()
+    {
+        maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", false);
+    }
+
+    public void animationQuandBougePas()
+    {
+        maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", true);
+
     }
 }

@@ -11,12 +11,15 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
     public Joueur joueur2;
     public Grid maGrid;
 
+    gestionLight gestionDeLaLumiere;
+
     List<Position> votreCheminASuivreSilVousPlait;
 
 	// Use this for initialization
 	void Start ()
     {
         votreCheminASuivreSilVousPlait = new List<Position>();
+        gestionDeLaLumiere = GetComponent<gestionLight>();
 	}
 	
 	// Update is called once per frame
@@ -55,46 +58,54 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
 
     public void updateTaPosition()
     {
-        if(votreCheminASuivreSilVousPlait.Count != 0)
+        try
         {
-            if(maGrid.GetAssociatedGoal(votreCheminASuivreSilVousPlait[0]) == null)
+            if (votreCheminASuivreSilVousPlait.Count != 0)
             {
-                if(votreCheminASuivreSilVousPlait.Count >= 2)
+                if (maGrid.GetAssociatedGoal(votreCheminASuivreSilVousPlait[0]) == null)
                 {
-                    if(maGrid.GetElement(votreCheminASuivreSilVousPlait[1].x,votreCheminASuivreSilVousPlait[1].y) == Grid.CELL)
+                    if (votreCheminASuivreSilVousPlait.Count >= 2)
                     {
-                        positionCourante = new Position(votreCheminASuivreSilVousPlait[1].x, votreCheminASuivreSilVousPlait[1].y);
-                        updaterMaPositionDansLeMondeDuJeu(positionCourante);
-                        votreCheminASuivreSilVousPlait.RemoveAt(0);
+                        if (maGrid.GetElement(votreCheminASuivreSilVousPlait[1].x, votreCheminASuivreSilVousPlait[1].y) == Grid.CELL)
+                        {
+                            positionCourante = new Position(votreCheminASuivreSilVousPlait[1].x, votreCheminASuivreSilVousPlait[1].y);
+                            updaterMaPositionDansLeMondeDuJeu(positionCourante);
+                            votreCheminASuivreSilVousPlait.RemoveAt(0);
+
+                        }
+                        else
+                            StartShortestPathFinding(positionCourante);
                     }
-                    else if(yATilQuelqueChoseAutourDeMoiMonsieur())
-                    {
-                        StartShortestPathFinding(positionCourante);
-                        //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
-                    }
+                }
+                else
+                {
+                    GoalInfo goal = maGrid.GetAssociatedGoal(positionCourante);
+                    int player = goal.GetPlayerNumber();
+                    if (player == 0)
+                        joueur1.addScore(1, goal);
+                    else
+                        joueur2.addScore(1, goal);
+                    positionCourante = startPosition;
+                    updaterMaPositionDansLeMondeDuJeu(positionCourante);
+                    StartShortestPathFinding(positionCourante);
                 }
             }
             else
             {
-                GoalInfo goal = maGrid.GetAssociatedGoal(positionCourante);
-                int player = goal.GetPlayerNumber();
-                if (player == 0)
-                    joueur1.addScore(1, goal);
-                else
-                    joueur2.addScore(1, goal);
+                StartShortestPathFinding(positionCourante);
+            }
+            if (maGrid.getGrid()[positionCourante.x, positionCourante.y] != 1)
+            {
                 positionCourante = startPosition;
                 updaterMaPositionDansLeMondeDuJeu(positionCourante);
                 StartShortestPathFinding(positionCourante);
-                //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
             }
         }
-        else
+        catch(Exception ex)
         {
-            if (yATilQuelqueChoseAutourDeMoiMonsieur())
-            {
-                StartShortestPathFinding(positionCourante);
-                //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
-            }
+            positionCourante = startPosition;
+            updaterMaPositionDansLeMondeDuJeu(positionCourante);
+            StartShortestPathFinding(positionCourante);
         }
     }
 
@@ -105,12 +116,16 @@ public class Lumiere : MonoBehaviour, DijkstraListener {
 
     void StartShortestPathFinding(Position start)
     {
-        maGrid.StartShortestConnectionFinding(this, start);
+        if (yATilQuelqueChoseAutourDeMoiMonsieur())
+            maGrid.StartShortestConnectionFinding(this, start);
+        else
+            gestionDeLaLumiere.animationQuandBougePas();
     }
 
     public void OnShortestPathFound(List<Position> path)
     {
-        Debug.Log("PATH FOUND");
+        if(path.Count > 0)
+            gestionDeLaLumiere.animationBouger();
         votreCheminASuivreSilVousPlait = path;
     }
 }
