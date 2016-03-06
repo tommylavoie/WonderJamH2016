@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class Lumiere : MonoBehaviour {
+public class Lumiere : MonoBehaviour, DijkstraListener {
 
     public Position startPosition;
     public Position positionCourante;
@@ -68,7 +69,8 @@ public class Lumiere : MonoBehaviour {
                     }
                     else if(yATilQuelqueChoseAutourDeMoiMonsieur())
                     {
-                        votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
+                        StartShortestPathFinding(positionCourante);
+                        //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
                     }
                 }
             }
@@ -82,14 +84,16 @@ public class Lumiere : MonoBehaviour {
                     joueur2.addScore(1);
                 positionCourante = startPosition;
                 updaterMaPositionDansLeMondeDuJeu(positionCourante);
-                votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
+                StartShortestPathFinding(positionCourante);
+                //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
             }
         }
         else
         {
             if (yATilQuelqueChoseAutourDeMoiMonsieur())
             {
-                votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
+                StartShortestPathFinding(positionCourante);
+                //votreCheminASuivreSilVousPlait = maGrid.GetShortestConnection(positionCourante);
             }
         }
     }
@@ -97,5 +101,16 @@ public class Lumiere : MonoBehaviour {
     public void updaterMaPositionDansLeMondeDuJeu(Position laPositionCourante)
     {
         transform.position = new Vector2(-7 + (laPositionCourante.y * 0.4f) , 3 -(laPositionCourante.x * 0.4f));
+    }
+
+    void StartShortestPathFinding(Position start)
+    {
+        maGrid.StartShortestConnectionFinding(this, start);
+    }
+
+    public void OnShortestPathFound(List<Position> path)
+    {
+        Debug.Log("PATH FOUND");
+        votreCheminASuivreSilVousPlait = path;
     }
 }

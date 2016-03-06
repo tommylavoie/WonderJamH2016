@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Cri.unity
+- path: Assets/Scenes/Salameche.unity
   isLoaded: 1
   isActive: 1

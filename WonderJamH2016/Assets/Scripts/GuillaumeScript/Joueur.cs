@@ -118,8 +118,6 @@ public class Joueur : MonoBehaviour {
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 pathfinder.UpdateShortestPaths();
                 depenserResource(coutCell);
-
-               List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
             
         }

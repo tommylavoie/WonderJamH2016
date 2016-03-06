@@ -8,12 +8,13 @@ public class Grid : MonoBehaviour
     int[,] grid;
     GoalInfo[] goals;
     Position[] spawners;
+    List<ShortestPathThread> threadsRunning;
 
 	// Use this for initialization
 	void Start ()
     {
         Init();
-        Debug.Log("WTF");
+        threadsRunning = new List<ShortestPathThread>();
     }
 
     void Init()
@@ -38,7 +39,19 @@ public class Grid : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    
+        List<ShortestPathThread> finishedThreads = new List<ShortestPathThread>();
+	    foreach(ShortestPathThread t in threadsRunning)
+        {
+            if(t.GetResult() != null)
+            {
+                t.NotifyListener();
+                finishedThreads.Add(t);
+            }
+        }
+        foreach(ShortestPathThread f in finishedThreads)
+        {
+            threadsRunning.Remove(f);
+        }
 	}
 
     public int[,] getGrid()
@@ -84,12 +97,19 @@ public class Grid : MonoBehaviour
         return null;
     }
 
-    List<Position> CreatePath(Position[,] paths, Position goal)
+    public void StartShortestConnectionFinding(DijkstraListener listener, Position start)
+    {
+        ShortestPathThread t = new ShortestPathThread(listener, this, goals, start);
+        threadsRunning.Add(t);
+        t.Start();
+    }
+
+    /*List<Position> CreatePath(Position[,] paths, Position goal)
     {
         Stack<Position> path = new Stack<Position>();
         Position actual = goal;
         bool finished = false;
-        while(!finished)
+        while (!finished)
         {
             path.Push(actual);
             Position newPosition = paths[actual.x, actual.y];
@@ -99,7 +119,7 @@ public class Grid : MonoBehaviour
                 actual = newPosition;
         }
         List<Position> list = new List<Position>();
-        while(path.Count != 0)
+        while (path.Count != 0)
         {
             list.Add(path.Pop());
         }
@@ -129,22 +149,7 @@ public class Grid : MonoBehaviour
         else
             path = new List<Position>();
         return path;
-    }
-
-    void testFill()
-    {
-        //grid[0, 1] = 1;
-        grid[1, 1] = 1;
-        grid[1, 2] = 1;
-        grid[1, 3] = 1;
-        grid[2, 3] = 1;
-        grid[2, 1] = 1;
-        grid[3, 3] = 1;
-        grid[3, 2] = 1;
-        grid[3, 1] = 1;
-        grid[4, 1] = 1;
-        GetShortestConnection(new Position(1, 1));
-    }
+    }*/
 
     public void print()
     {
