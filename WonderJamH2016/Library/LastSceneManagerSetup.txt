@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Tuto.unity
-=======
-- path: Assets/Scenes/Rondoudou 1.unity
->>>>>>> bea39d2cf371dbbe6fb40061019147a4cbe0b9fd
+- path: Assets/Scenes/canada1.unity
   isLoaded: 1
   isActive: 1
