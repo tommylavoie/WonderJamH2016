@@ -4,17 +4,20 @@ using System.Collections;
 public class gestionLight : MonoBehaviour {
 
     public bool updateMaLumiere = false;
-    Light maLumiere;
+    //Light maLumiere;
     float leDelaisDuTic;
     float tempsQuiPasse;
 
     bool AllerFait = false;
 
+    public GameObject maLumiere;
 
 	// Use this for initialization
 	void Start () {
-        maLumiere = GetComponent<Light>();
-        leDelaisDuTic = GameManager.instance.delaisEntreChaqueTic / 4;
+        /*maLumiere = GetComponent<Light>();
+        leDelaisDuTic = GameManager.instance.delaisEntreChaqueTic / 4;*/
+
+
 	
 	}
 	
@@ -45,4 +48,12 @@ public class gestionLight : MonoBehaviour {
             }
         }
 	}*/
+
+    void Update()
+    {
+        if (updateMaLumiere == true)
+        {
+            maLumiere.GetComponent<Animator>().SetBool("lumiereAuSpawner", false);
+        }
+    }
 }
