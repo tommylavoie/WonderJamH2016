@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Joueur : MonoBehaviour {
 
+    public int NoJoueur = 1;
     public GameObject cell;
     public GameObject bomb;
     public GameObject cancer;
@@ -105,7 +106,6 @@ public class Joueur : MonoBehaviour {
     {
         score = score + leScore;
         updaterScoreUI();
-
     }
 
     public void placerCell()
@@ -147,6 +147,8 @@ public class Joueur : MonoBehaviour {
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 depenserResource(coutCancer);
                 GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
+                GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                        .AddNews("Une tumeur vient de naître!");
             }
 
         }
@@ -159,6 +161,8 @@ public class Joueur : MonoBehaviour {
         {
             Instantiate(bomb, transform.position, Quaternion.identity);
             depenserResource(coutBomb);
+            GameObject.FindGameObjectWithTag("TVANouvelles").GetComponent<InfoText>()
+                        .AddNews("Alerte à la bombe!");
         }
     }
 

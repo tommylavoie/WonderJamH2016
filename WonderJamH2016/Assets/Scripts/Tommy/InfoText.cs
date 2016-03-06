@@ -46,7 +46,7 @@ public class InfoText : MonoBehaviour
 
     void ExecuteShow()
     {
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(0, transform.position.y), Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(-actual.Length*10, transform.position.y), Speed * Time.deltaTime);
         if (transform.position.x <= 0.1f)
             EndShow();
     }
