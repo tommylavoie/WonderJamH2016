@@ -19,7 +19,7 @@ public class InfoText : MonoBehaviour
     {
         infoQueue = new Queue<string>();
         text = GetComponent<Text>();
-        transform.position = new Vector2(0, Screen.height - timerPanel.GetComponent<RectTransform>().sizeDelta.y - 5);
+        transform.position = new Vector2(0, Screen.height - timerPanel.GetComponent<RectTransform>().sizeDelta.y - 50);
     }
 	
 	// Update is called once per frame

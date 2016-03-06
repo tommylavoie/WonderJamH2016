@@ -62,9 +62,9 @@ public class Pathfinder : MonoBehaviour, DijkstraListener
             if (cellGrid.GetElement(new Position(node.x, node.y)) != null && cellGrid.GetElement(node).tag == "Cell")
             {
                 if(player == 1)
-                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 1);
-                else
                     ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 2);
+                else
+                    ChangeSprite(cellGrid.GetElement(new Position(node.x, node.y)), 1);
             }
         }
     }

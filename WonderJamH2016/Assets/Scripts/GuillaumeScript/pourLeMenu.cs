@@ -25,6 +25,6 @@ public class pourLeMenu : MonoBehaviour {
 
     public void leBtnTuto()
     {
-
+        Application.LoadLevel("tutoMenu");
     }
 }

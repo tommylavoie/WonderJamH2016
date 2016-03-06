@@ -15,6 +15,6 @@ public class scriptAnimationDebut : MonoBehaviour {
 
     public void FinAnimation()
     {
-        Application.LoadLevel("Salameche");
+        Application.LoadLevel("Tuto");
     }
 }
