@@ -133,4 +133,11 @@ public class LumiereManager : MonoBehaviour
         }
     }
 
+    public void SpeedUp()
+    {
+        foreach(GameObject o in poolDesLumiereGameObject)
+        {
+            o.GetComponent<Lumiere>().speedUp();
+        }
+    }
 }

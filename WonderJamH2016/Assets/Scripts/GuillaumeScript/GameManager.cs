@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour {
         info.ClearNews();
         info.AddNews("Plus vite, il ne reste que 30 secondes!");
         audioSource.pitch = 1.25f;
+        leManagerDeLumiere.GetComponent<LumiereManager>().SpeedUp();
         lesAmisVirguleIlEstLeTempsDeSeDepecherUnPeuVirguleLeTempsPresseVirguleVousNeVoyezPasQuilResteSeulementTrenteSecondesALaPartie = true;
     }
 
