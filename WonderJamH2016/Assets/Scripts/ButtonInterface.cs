@@ -31,7 +31,7 @@ public class ButtonInterface : MonoBehaviour {
         }
 
 
-        if (joueur.GetComponent<Joueur>().resource < joueur.GetComponent<Joueur>().coutCancer)
+        if (joueur.GetComponent<Joueur>().resource < joueur.GetComponent<Joueur>().coutBomb)
         {
             Y_ON.SetActive(false);
             Y_OFF.SetActive(true);
@@ -42,7 +42,7 @@ public class ButtonInterface : MonoBehaviour {
             Y_OFF.SetActive(false);
         }
 
-        if (joueur.GetComponent<Joueur>().resource < joueur.GetComponent<Joueur>().coutBomb)
+        if (joueur.GetComponent<Joueur>().resource < joueur.GetComponent<Joueur>().coutCancer)
         {
             B_ON.SetActive(false);
             B_OFF.SetActive(true);
