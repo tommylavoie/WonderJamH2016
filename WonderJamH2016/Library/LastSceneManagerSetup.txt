@@ -1,4 +1,8 @@
 sceneSetups:
-- path: Assets/Scenes/Salameche.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/Guillaume.unity
+=======
+- path: Assets/Scenes/Tommy.unity
+>>>>>>> 02c20f613d817e1b039451287b4648ec2426fe56
   isLoaded: 1
   isActive: 1
