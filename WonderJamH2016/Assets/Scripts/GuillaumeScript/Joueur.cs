@@ -31,6 +31,13 @@ public class Joueur : MonoBehaviour {
     public GameObject textUp;
     public scriptTextUp textUpChild;
 
+    public AudioClip collectRessourceSound;
+    public AudioClip placerBlockSound;
+    public AudioClip frapperCellSound;
+    public AudioClip frapperCancerSound;
+
+    public float volumesound;
+
 	// Use this for initialization
 	void Start () {
         setScore(score);
@@ -55,10 +62,11 @@ public class Joueur : MonoBehaviour {
 
     public void addResource(int nbrDeResourceGagner)
     {
-        resource = resource = nbrDeResourceGagner;
+        resource = resource + nbrDeResourceGagner;
         updaterResourceUI();
         GameObject myTextUP =  Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        textUpChild.setText("" + nbrDeResourceGagner);
+        myTextUP.GetComponentInChildren<scriptTextUp>().setText("" + nbrDeResourceGagner);
+        GetComponent<AudioSource>().PlayOneShot(collectRessourceSound, volumesound);
 
     }
 
@@ -66,9 +74,8 @@ public class Joueur : MonoBehaviour {
     {
         resource = resource - nbrDeResourceDepenser;
         updaterResourceUI();
-
         GameObject myTextUP = Instantiate(textUp, transform.position, Quaternion.identity) as GameObject;
-        textUpChild.setText("-" + nbrDeResourceDepenser);
+        myTextUP.GetComponentInChildren<scriptTextUp>().setText("-" + nbrDeResourceDepenser);
     }
 
     public bool PeutIlAcheter(int nbrDeResouceNecessaire)
@@ -94,7 +101,7 @@ public class Joueur : MonoBehaviour {
         updaterScoreUI();
     }
 
-    public void addScore(int leScore)
+    public void addScore(int leScore, GoalInfo goal)
     {
         score = score + leScore;
         updaterScoreUI();
@@ -118,8 +125,8 @@ public class Joueur : MonoBehaviour {
                 cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 pathfinder.UpdateShortestPaths();
                 depenserResource(coutCell);
-
-               List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
+                GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
+                //List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
             
         }
@@ -137,6 +144,7 @@ public class Joueur : MonoBehaviour {
                 myCancer.GetComponent<CancerScript>().indexLigne = indexLigne;
                 myCancer.GetComponent<CancerScript>().grid = grid;
                 grid.SetElement(Grid.DEAD_CELL, new Position(indexLigne, indexCol));
+                cellGrid.SetElement(myCancer, new Position(indexLigne, indexCol));
                 depenserResource(coutCancer);
             }
 
@@ -157,8 +165,17 @@ public class Joueur : MonoBehaviour {
     {
         GameObject o = cellGrid.GetElement(new Position(indexLigne, indexCol));
 
-        if(o != null && o.tag == "Cell" || o.tag == "Cancer")
+        if((o != null) && (o.tag == "Cell" || o.tag == "Cancer"))
         {
+            if(o.tag == "Cell")
+            {
+                GetComponent<AudioSource>().PlayOneShot(frapperCellSound, volumesound);
+            }
+            else if(o.tag == "Cancer")
+            {
+                GetComponent<AudioSource>().PlayOneShot(frapperCancerSound, volumesound);
+            }
+
             if(o.GetComponent<CancerScript>().VieActuelle == 1)
             {
                 o.GetComponent<CancerScript>().Hurt();
