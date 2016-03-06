@@ -3,8 +3,11 @@ using System.Collections;
 
 public class pourLeMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject canvas;
+    public GameObject animation;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -15,7 +18,9 @@ public class pourLeMenu : MonoBehaviour {
 
     public void leBtnStart()
     {
-        Application.LoadLevel("Salameche");
+        canvas.SetActive(false);
+        animation.GetComponent<Animator>().enabled = true;
+        //Application.LoadLevel("Salameche");
     }
 
     public void leBtnTuto()
