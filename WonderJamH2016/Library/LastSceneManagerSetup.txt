@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/StartScreen.unity
+=======
+- path: Assets/Scenes/Rondoudou.unity
+>>>>>>> 87ed07061d7439971dc18fbb78e9125f4c43ae19
   isLoaded: 1
   isActive: 1

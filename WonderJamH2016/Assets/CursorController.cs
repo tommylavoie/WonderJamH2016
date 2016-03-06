@@ -32,164 +32,168 @@ public class CursorController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown(nomButtonPlaceCell))
+        if (GameManager.instance.laPartieEstCommencer)
         {
-            Joueur.GetComponent<Joueur>().placerCell();
-        }
 
-        if (Input.GetButtonDown(nomButtonCancer))
-        {
-            
-            Joueur.GetComponent<Joueur>().placerCancer();
-        }
+            if (Input.GetButtonDown(nomButtonPlaceCell))
+            {
+                Joueur.GetComponent<Joueur>().placerCell();
+            }
 
-        if(Input.GetButtonDown(nomButtonBomb))
-        {
-            Debug.Log("test");
-            Joueur.GetComponent<Joueur>().placerBomb();
-        }
+            if (Input.GetButtonDown(nomButtonCancer))
+            {
 
-        if(Input.GetButtonDown(nomButtonHammer))
-        {
-            Joueur.GetComponent<Joueur>().faireHammer();
-        }
+                Joueur.GetComponent<Joueur>().placerCancer();
+            }
 
-        if (CanPress)
-        {
-            
+            if (Input.GetButtonDown(nomButtonBomb))
+            {
+                Debug.Log("test");
+                Joueur.GetComponent<Joueur>().placerBomb();
+            }
 
-            /*if (Input.GetAxis("Horizontal") > 0.3f && Input.GetAxis("Vertical") > 0.3f)
+            if (Input.GetButtonDown(nomButtonHammer))
             {
-                Debug.Log("joystic");
-                transform.Translate(new Vector3(0.6f, 0, 0));
-                transform.Translate(new Vector3(0, 0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
+                Joueur.GetComponent<Joueur>().faireHammer();
             }
-            else if (Input.GetAxis("Horizontal") < -0.3f && Input.GetAxis("Vertical") > 0.3f)
-            {
-                transform.Translate(new Vector3(-0.6f, 0, 0));
-                transform.Translate(new Vector3(0, 0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Horizontal") > 0.3f && Input.GetAxis("Vertical") < -0.3f)
-            {
-                transform.Translate(new Vector3(0.6f, 0, 0));
-                transform.Translate(new Vector3(0, -0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Horizontal") < -0.3f && Input.GetAxis("Vertical") < -0.3f)
-            {
-                transform.Translate(new Vector3(-0.6f, 0, 0));
-                transform.Translate(new Vector3(0, -0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Horizontal") > 0.8f)
-            {
-                transform.Translate(new Vector3(0.6f, 0, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Vertical") > 0.8f)
-            {
-                transform.Translate(new Vector3(0, 0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Horizontal") < -0.8f)
-            {
-                transform.Translate(new Vector3(-0.6f, 0, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }
-            else if (Input.GetAxis("Vertical") < -0.8f)
-            {
-                transform.Translate(new Vector3(0, -0.6f, 0));
-                StartCoroutine(WaitForInput(timeBetwenMove));
-            }*/
 
-            //Dpad
-
-            if (Input.GetAxisRaw(nomHori) > 0.3f && Input.GetAxisRaw(nomVerti) > 0.3f)
+            if (CanPress)
             {
-                if(transform.position.x < maxDistanceHori && transform.position.y < maxDistanceVerti)
+
+
+                /*if (Input.GetAxis("Horizontal") > 0.3f && Input.GetAxis("Vertical") > 0.3f)
                 {
-                    transform.Translate(new Vector3(commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol++;
-                    transform.Translate(new Vector3(0, commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne--;
+                    Debug.Log("joystic");
+                    transform.Translate(new Vector3(0.6f, 0, 0));
+                    transform.Translate(new Vector3(0, 0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-            }
-            else if (Input.GetAxisRaw(nomHori) < -0.3f && Input.GetAxisRaw(nomVerti) > 0.3f)
-            {
-                if (transform.position.x > -maxDistanceHori && transform.position.y < maxDistanceVerti)
+                else if (Input.GetAxis("Horizontal") < -0.3f && Input.GetAxis("Vertical") > 0.3f)
                 {
-                    transform.Translate(new Vector3(-commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol--;
-                    transform.Translate(new Vector3(0, commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne--;
+                    transform.Translate(new Vector3(-0.6f, 0, 0));
+                    transform.Translate(new Vector3(0, 0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomHori) > 0.3f && Input.GetAxisRaw(nomVerti) < -0.3f)
-            {
-                if (transform.position.x < maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                else if (Input.GetAxis("Horizontal") > 0.3f && Input.GetAxis("Vertical") < -0.3f)
                 {
-                    transform.Translate(new Vector3(commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol++;
-                    transform.Translate(new Vector3(0, -commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne++;
+                    transform.Translate(new Vector3(0.6f, 0, 0));
+                    transform.Translate(new Vector3(0, -0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomHori) < -0.3f && Input.GetAxisRaw(nomVerti) < -0.3f)
-            {
-                if (transform.position.x > -maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                else if (Input.GetAxis("Horizontal") < -0.3f && Input.GetAxis("Vertical") < -0.3f)
                 {
-                    transform.Translate(new Vector3(-commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol--;
-                    transform.Translate(new Vector3(0, -commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne++;
+                    transform.Translate(new Vector3(-0.6f, 0, 0));
+                    transform.Translate(new Vector3(0, -0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomHori) > 0.1f)
-            {
-                if (transform.position.x < maxDistanceHori)
+                else if (Input.GetAxis("Horizontal") > 0.8f)
                 {
-                    transform.Translate(new Vector3(commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol++;
+                    transform.Translate(new Vector3(0.6f, 0, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomVerti) > 0.1f)
-            {
-                if (transform.position.y < maxDistanceVerti)
+                else if (Input.GetAxis("Vertical") > 0.8f)
                 {
-                    transform.Translate(new Vector3(0, commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne--;
+                    transform.Translate(new Vector3(0, 0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomHori) < -0.1f)
-            {
-                if (transform.position.x > -maxDistanceHori)
+                else if (Input.GetAxis("Horizontal") < -0.8f)
                 {
-                    transform.Translate(new Vector3(-commentTasser, 0, 0));
-                    Joueur.GetComponent<Joueur>().indexCol--;
+                    transform.Translate(new Vector3(-0.6f, 0, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
                 }
-                
-            }
-            else if (Input.GetAxisRaw(nomVerti) < -0.1f)
-            {
-                if (transform.position.y > -maxDistanceVerti)
+                else if (Input.GetAxis("Vertical") < -0.8f)
                 {
-                    transform.Translate(new Vector3(0, -commentTasser, 0));
-                    Joueur.GetComponent<Joueur>().indexLigne++;
+                    transform.Translate(new Vector3(0, -0.6f, 0));
                     StartCoroutine(WaitForInput(timeBetwenMove));
+                }*/
+
+                //Dpad
+
+                if (Input.GetAxisRaw(nomHori) > 0.3f && Input.GetAxisRaw(nomVerti) > 0.3f)
+                {
+                    if (transform.position.x < maxDistanceHori && transform.position.y < maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol++;
+                        transform.Translate(new Vector3(0, commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne--;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+                }
+                else if (Input.GetAxisRaw(nomHori) < -0.3f && Input.GetAxisRaw(nomVerti) > 0.3f)
+                {
+                    if (transform.position.x > -maxDistanceHori && transform.position.y < maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(-commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol--;
+                        transform.Translate(new Vector3(0, commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne--;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomHori) > 0.3f && Input.GetAxisRaw(nomVerti) < -0.3f)
+                {
+                    if (transform.position.x < maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol++;
+                        transform.Translate(new Vector3(0, -commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne++;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomHori) < -0.3f && Input.GetAxisRaw(nomVerti) < -0.3f)
+                {
+                    if (transform.position.x > -maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(-commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol--;
+                        transform.Translate(new Vector3(0, -commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne++;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomHori) > 0.1f)
+                {
+                    if (transform.position.x < maxDistanceHori)
+                    {
+                        transform.Translate(new Vector3(commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol++;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomVerti) > 0.1f)
+                {
+                    if (transform.position.y < maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(0, commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne--;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomHori) < -0.1f)
+                {
+                    if (transform.position.x > -maxDistanceHori)
+                    {
+                        transform.Translate(new Vector3(-commentTasser, 0, 0));
+                        Joueur.GetComponent<Joueur>().indexCol--;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
+
+                }
+                else if (Input.GetAxisRaw(nomVerti) < -0.1f)
+                {
+                    if (transform.position.y > -maxDistanceVerti)
+                    {
+                        transform.Translate(new Vector3(0, -commentTasser, 0));
+                        Joueur.GetComponent<Joueur>().indexLigne++;
+                        StartCoroutine(WaitForInput(timeBetwenMove));
+                    }
                 }
             }
         }
