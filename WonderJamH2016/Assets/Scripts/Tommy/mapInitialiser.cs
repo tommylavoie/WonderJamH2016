@@ -7,6 +7,7 @@ public class mapInitialiser : MonoBehaviour {
     public GameObject spawner;
     public GameObject mine;
     public GameObject eclair;
+    public GameObject cancer;
 
 	// Use this for initialization
 	void Start () {
@@ -28,13 +29,17 @@ public class mapInitialiser : MonoBehaviour {
                 int element = grid.GetElement(i, j);
                 if(element == Grid.SPAWN)
                 {
-                    Debug.Log("SPawn");
                     Instantiate(spawner, new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f)), Quaternion.identity);
                 }
                 else if(element == Grid.MINE)
                 {
-                    Debug.Log("SPawn");
                     Instantiate(mine, new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f)), Quaternion.identity);
+                }
+                else if(element == Grid.DEAD_CELL)
+                {
+                    GameObject o = (GameObject)Instantiate(cancer, new Vector2(-7 + (j * 0.4f), 3 - (i * 0.4f)), Quaternion.identity);
+                    o.GetComponent<CancerScript>().grid = grid;
+                    GetComponent<CellGrid>().SetElement(o, new Position(i, j));
                 }
             }
         }

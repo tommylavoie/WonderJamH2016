@@ -37,6 +37,7 @@ public class Joueur : MonoBehaviour {
     public AudioClip frapperCellSound;
     public AudioClip frapperCancerSound;
     public AudioClip errorSound;
+    public AudioClip entrerRessourceSound;
 
     public float volumesound;
 
@@ -106,8 +107,9 @@ public class Joueur : MonoBehaviour {
     public void addScore(int leScore, GoalInfo goal)
     {
         score = score + leScore;
-
-//transform.position = new Vector2(-7 + (laPositionCourante.y * 0.4f), 3 - (laPositionCourante.x * 0.4f));
+        GameObject myTextUP = Instantiate(textUp, new Vector2(-7 + (goal.position.y * 0.4f), 3 - (goal.position.x * 0.4f)), Quaternion.identity) as GameObject;
+        myTextUP.GetComponentInChildren<scriptTextUp>().setText("" + leScore);
+        GetComponent<AudioSource>().PlayOneShot(entrerRessourceSound, volumesound);
         updaterScoreUI();
 
     }
@@ -132,7 +134,15 @@ public class Joueur : MonoBehaviour {
                 GetComponent<AudioSource>().PlayOneShot(placerBlockSound, volumesound);
                 //List<Position> test = grid.GetShortestConnection(new Position(indexLigne, indexCol));
             }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
+            }
             
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(errorSound, volumesound);
         }
         
     }
