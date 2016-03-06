@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/WinPlayer2.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/Tuto.unity
+=======
+- path: Assets/Scenes/Rondoudou 1.unity
+>>>>>>> bea39d2cf371dbbe6fb40061019147a4cbe0b9fd
+>>>>>>> 5366937918b28f07bf4fa5a088eaa6d4b488d2e3
   isLoaded: 1
   isActive: 1
