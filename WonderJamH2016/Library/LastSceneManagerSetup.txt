@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tommy.unity
+- path: Assets/Scenes/Guillaume.unity
   isLoaded: 1
   isActive: 1
