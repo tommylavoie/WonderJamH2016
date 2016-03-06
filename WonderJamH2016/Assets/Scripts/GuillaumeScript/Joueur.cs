@@ -35,6 +35,7 @@ public class Joueur : MonoBehaviour {
     public AudioClip placerBlockSound;
     public AudioClip frapperCellSound;
     public AudioClip frapperCancerSound;
+    public AudioClip errorSound;
 
     public float volumesound;
 
