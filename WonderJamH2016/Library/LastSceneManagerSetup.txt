@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/Guillaume.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/StartScreen.unity
-=======
-- path: Assets/Scenes/Rondoudou.unity
->>>>>>> 279e16bdac63b3835af1125abcc4774cda306626
->>>>>>> 2848af127e98da98042b705ba5247d23163f2354
   isLoaded: 1
   isActive: 1
