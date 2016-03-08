@@ -18,6 +18,7 @@ public class scriptAnimationWin2 : MonoBehaviour {
 
     void ChangerScene()
     {
+        Destroy(GameManager.instance.gameObject);
         Application.LoadLevel("canada2");
     }
 
