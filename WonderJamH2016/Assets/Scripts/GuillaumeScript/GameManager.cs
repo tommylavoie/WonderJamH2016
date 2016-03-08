@@ -174,7 +174,6 @@ public class GameManager : MonoBehaviour {
                     //On vient juste d'arriver dans la scene
                     //On instancie le 321
                     Instantiate(troisDeuxUnGo, Vector3.zero, Quaternion.identity);
-                    Debug.Log("Je fonctionne");
                     jaiDejaFaisLeTroisDeuxUnGo = true;
                 }
             }

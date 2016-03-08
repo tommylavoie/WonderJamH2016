@@ -4,6 +4,7 @@ using System.Collections;
 public class CursorController : MonoBehaviour {
 
     public GameObject Joueur;
+    public int idJoueur;
     public float commentTasser;
 
     public string nomHori;
@@ -26,7 +27,6 @@ public class CursorController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         mySpriteRender = sizeGameObject.GetComponent<SpriteRenderer>();
-        Debug.Log(mySpriteRender.bounds.size);
 	}
 	
 	// Update is called once per frame
@@ -57,10 +57,34 @@ public class CursorController : MonoBehaviour {
                 Joueur.GetComponent<Joueur>().faireHammer();
             }
 
+            if(idJoueur == 2)
+            {
+                Debug.Log("ici");
+                if (Input.GetButtonDown("PlaceCellKB"))
+                {
+                    Joueur.GetComponent<Joueur>().placerCell();
+                }
+
+                if (Input.GetButtonDown("PlaceCancerKB"))
+                {
+
+                    Joueur.GetComponent<Joueur>().placerCancer();
+                }
+
+                if (Input.GetButtonDown("PlaceBombKB"))
+                {
+                    Debug.Log("test");
+                    Joueur.GetComponent<Joueur>().placerBomb();
+                }
+
+                if (Input.GetButtonDown("HammerKB"))
+                {
+                    Joueur.GetComponent<Joueur>().faireHammer();
+                }
+            }
+
             if (CanPress)
             {
-
-
                 /*if (Input.GetAxis("Horizontal") > 0.3f && Input.GetAxis("Vertical") > 0.3f)
                 {
                     Debug.Log("joystic");
@@ -108,6 +132,96 @@ public class CursorController : MonoBehaviour {
                 }*/
 
                 //Dpad
+
+                if (idJoueur == 2)
+                {
+                    if (Input.GetAxisRaw("HorizontalKB") > 0.3f && Input.GetAxisRaw("VerticalKB") > 0.3f)
+                    {
+                        if (transform.position.x < maxDistanceHori && transform.position.y < maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol++;
+                            transform.Translate(new Vector3(0, commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne--;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+                    }
+                    else if (Input.GetAxisRaw("HorizontalKB") < -0.3f && Input.GetAxisRaw("VerticalKB") > 0.3f)
+                    {
+                        if (transform.position.x > -maxDistanceHori && transform.position.y < maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(-commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol--;
+                            transform.Translate(new Vector3(0, commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne--;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("HorizontalKB") > 0.3f && Input.GetAxisRaw("VerticalKB") < -0.3f)
+                    {
+                        if (transform.position.x < maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol++;
+                            transform.Translate(new Vector3(0, -commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne++;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("HorizontalKB") < -0.3f && Input.GetAxisRaw("VerticalKB") < -0.3f)
+                    {
+                        if (transform.position.x > -maxDistanceHori && transform.position.y > -maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(-commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol--;
+                            transform.Translate(new Vector3(0, -commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne++;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("HorizontalKB") > 0.1f)
+                    {
+                        if (transform.position.x < maxDistanceHori)
+                        {
+                            transform.Translate(new Vector3(commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol++;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("VerticalKB") > 0.1f)
+                    {
+                        if (transform.position.y < maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(0, commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne--;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("HorizontalKB") < -0.1f)
+                    {
+                        if (transform.position.x > -maxDistanceHori)
+                        {
+                            transform.Translate(new Vector3(-commentTasser, 0, 0));
+                            Joueur.GetComponent<Joueur>().indexCol--;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+
+                    }
+                    else if (Input.GetAxisRaw("VerticalKB") < -0.1f)
+                    {
+                        if (transform.position.y > -maxDistanceVerti)
+                        {
+                            transform.Translate(new Vector3(0, -commentTasser, 0));
+                            Joueur.GetComponent<Joueur>().indexLigne++;
+                            StartCoroutine(WaitForInput(timeBetwenMove));
+                        }
+                    }
+                }
 
                 if (Input.GetAxisRaw(nomHori) > 0.3f && Input.GetAxisRaw(nomVerti) > 0.3f)
                 {

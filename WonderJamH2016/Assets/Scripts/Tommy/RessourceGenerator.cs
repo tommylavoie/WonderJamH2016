@@ -68,7 +68,6 @@ public class RessourceGenerator : MonoBehaviour
         int lottery = RNG(0, 100);
         if(lottery < Probability)
         {
-            Debug.Log("New Item!");
             Position emptyCell = getEmptyCell();
             if (emptyCell != null)
             {

@@ -174,7 +174,6 @@ public class Grid : MonoBehaviour
             {
                 printing += grid[i, j] + ",";
             }
-            Debug.Log(printing);
         }
     }
 

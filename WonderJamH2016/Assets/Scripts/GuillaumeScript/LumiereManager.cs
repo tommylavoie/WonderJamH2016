@@ -70,7 +70,6 @@ public class LumiereManager : MonoBehaviour
 
     public void unTic()
     {
-        Debug.Log("Tic");
         for (int i = 0; i < poolDesLumiereGameObject.Length; i++)
         {
             Lumiere lumiere = poolDesLumiereGameObject[i].GetComponent<Lumiere>();
